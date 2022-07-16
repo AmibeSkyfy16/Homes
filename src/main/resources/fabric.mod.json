@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "homes",
+  "version": "${version}",
+  "name": "Homes",
+  "description": "This mod allow player to have homes, they can create them with /createHome <name>",
+  "authors": ["Skyfy16"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/homes/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "server": [
+      {
+        "adapter": "kotlin",
+        "value": "ch.skyfy.homes.HomesMod"
+      }
+    ],
+    "main": []
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.19",
+    "fabric-language-kotlin": ">=1.8.1+kotlin.1.7.0"
+  }
+}
