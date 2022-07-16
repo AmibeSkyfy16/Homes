@@ -1,17 +1,19 @@
 package ch.skyfy.homes
 
+import ch.skyfy.homes.commands.CreateHome
+import ch.skyfy.homes.commands.ReloadConfig
 import ch.skyfy.homes.config.Configs
+import ch.skyfy.homes.config.Player
 import ch.skyfy.homes.utils.setupConfigDirectory
 import ch.skyfy.jsonconfig.JsonConfig
 import ch.skyfy.jsonconfig.JsonManager
-import kotlinx.serialization.json.Json
 import net.fabricmc.api.DedicatedServerModInitializer
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.loader.api.FabricLoader
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.nio.file.Path
-import kotlin.io.path.createDirectory
-import kotlin.io.path.exists
 
 @Suppress("MemberVisibilityCanBePrivate")
 class HomesMod : DedicatedServerModInitializer {
@@ -27,6 +29,23 @@ class HomesMod : DedicatedServerModInitializer {
         JsonConfig.loadConfigs(arrayOf(Configs.javaClass))
     }
 
-    override fun onInitializeServer() {}
+    override fun onInitializeServer() {
+        registerCommands()
+
+        ServerPlayConnectionEvents.JOIN.register{ handler, _, _ ->
+            Configs.PLAYERS_HOMES.data.players.add(Player(
+                uuid = handler.player.uuidAsString,
+                permsGroups = mutableSetOf("PLAYERS")
+            ))
+            JsonManager.save(Configs.PLAYERS_HOMES)
+        }
+    }
+
+    private fun registerCommands() {
+        CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
+            CreateHome().register(dispatcher)
+            ReloadConfig().register(dispatcher)
+        }
+    }
 
 }

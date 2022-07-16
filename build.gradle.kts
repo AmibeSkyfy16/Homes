@@ -61,7 +61,7 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:${properties["fabric_version"]}")
     modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
 
-    transitiveInclude(implementation("ch.skyfy.jsonconfig:json-config:2.1")!!)
+    transitiveInclude(implementation("ch.skyfy.jsonconfig:json-config:2.1.3")!!)
 
     handleIncludes(project, transitiveInclude)
 

@@ -1,0 +1,43 @@
+/homes create <name>
+    desc: Create a home for the player who typed the command
+    required permission: CREATE_HOME
+
+/homes create <name> <x> <y> <z> <yaw> <pitch>
+    desc: Create a home for the player who typed the command with the specific coordinate
+    permission: CREATE_HOME_WITH_COORDINATES
+
+/homes delete <name>
+    desc: Delete specified home for the player who typed the command
+    permission: DELETE_HOME
+
+/homes teleport <name>
+    desc: Teleport the player who typed the command to her home
+    permission: TELEPORT_HOME
+
+/homes list
+    desc: Print a list of all created homes for the player who typed the command
+    permission: LIST_HOME
+
+
+
+// The following commands should be used by Admin Only
+
+/homes player <player name> create <name>
+    desc: Create a home for the player that has been specified in the command
+    required permission: CREATE_HOME_FOR_ANOTHER_PLAYER
+
+/homes player <player name> create <name> <x> <y> <z> <yaw> <pitch>
+    desc: Create a home for the player that has been specified in the command with the specific coordinate
+    required permission: CREATE_HOME_FOR_ANOTHER_PLAYER_WITH_COORDINATES
+
+/homes player <player name> delete <name>
+    desc: Delete a home for the player that has been specified in the command
+    required permission: DELETE_HOME_FOR_ANOTHER_PLAYER
+
+/homes player <player name> teleport <name>
+    desc: Teleport the player who typed the command to the home of the player specified in the command
+    required permission: TELEPORT_HOME_FROM_ANOTHER_PLAYER
+
+/homes player <player name> list <name>
+    desc: Print a list of all created homes for the player specified in the command
+    required permission: LIST_HOME_FOR_ANOTHER_PLAYER

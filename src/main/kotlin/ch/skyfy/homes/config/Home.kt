@@ -5,14 +5,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Home(
-    var x: Int,
-    var y: Int,
-    var z: Int,
+    var x: Double,
+    var y: Double,
+    var z: Double,
     var pitch: Float,
     var yaw: Float,
     var name: String
-) : Validatable {
-
-    override fun validate(errors: MutableList<String>) {
-    }
-}
+) : Validatable
