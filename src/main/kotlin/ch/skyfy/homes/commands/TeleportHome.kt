@@ -110,8 +110,8 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
 
             runBlocking {
 //                triple.second.add(this)
-                repeat(player.standStill) {
-                    spe.sendMessage(Text.literal("$it seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
+                repeat(player.standStill) { second ->
+                    spe.sendMessage(Text.literal("${player.standStill - second} seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
                     delay(1000L)
                 }
             }
