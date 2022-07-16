@@ -18,7 +18,7 @@
     ],
     "main": []
   },
-  "mixins": [],
+  "mixins": ["homes.mixin.json"],
   "depends": {
     "fabricloader": ">=0.14.8",
     "fabric": "*",

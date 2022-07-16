@@ -1,7 +1,9 @@
 package ch.skyfy.homes
 
 import ch.skyfy.homes.commands.CreateHome
+import ch.skyfy.homes.commands.DeleteHome
 import ch.skyfy.homes.commands.ReloadConfig
+import ch.skyfy.homes.commands.TeleportHome
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Player
 import ch.skyfy.homes.utils.setupConfigDirectory
@@ -44,6 +46,8 @@ class HomesMod : DedicatedServerModInitializer {
     private fun registerCommands() {
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
             CreateHome().register(dispatcher)
+            DeleteHome().register(dispatcher)
+            TeleportHome().register(dispatcher)
             ReloadConfig().register(dispatcher)
         }
     }

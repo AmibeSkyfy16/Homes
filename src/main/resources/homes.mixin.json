@@ -7,7 +7,7 @@
 
   ],
   "server": [
-
+    "EntityMixin"
   ],
   "client": [
   ],

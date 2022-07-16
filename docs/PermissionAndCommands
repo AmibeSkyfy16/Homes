@@ -36,7 +36,7 @@
 
 /homes player <player name> teleport <name>
     desc: Teleport the player who typed the command to the home of the player specified in the command
-    required permission: TELEPORT_HOME_FROM_ANOTHER_PLAYER
+    required permission: TELEPORT_HOME_TO_ANOTHER_PLAYER
 
 /homes player <player name> list <name>
     desc: Print a list of all created homes for the player specified in the command
