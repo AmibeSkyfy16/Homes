@@ -19,7 +19,9 @@ fun setupConfigDirectory(){
 fun hasPermission(player: Player, perms: Perms): Boolean {
     var has = false
     player.permsGroups.forEach { group ->
-        Configs.GROUPS_PERMS.data.groups[group]?.let { permsList -> has = permsList.contains(perms) }
+        Configs.GROUPS_PERMS.data.groups[group]?.let { permsList ->
+            has = permsList.contains(perms)  || permsList.contains(Perms.ALL)
+        }
     }
     return has
 }
