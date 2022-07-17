@@ -32,11 +32,13 @@ class HomesMod : DedicatedServerModInitializer {
         registerCommands()
 
         ServerPlayConnectionEvents.JOIN.register{ handler, _, _ ->
-            Configs.PLAYERS_HOMES.data.players.add(Player(
-                uuid = handler.player.uuidAsString,
-                permsGroups = mutableSetOf("PLAYERS")
-            ))
-            JsonManager.save(Configs.PLAYERS_HOMES)
+            if(Configs.PLAYERS_HOMES.data.players.stream().noneMatch { it.uuid ==  handler.player.uuidAsString}){
+                Configs.PLAYERS_HOMES.data.players.add(Player(
+                    uuid = handler.player.uuidAsString,
+                    permsGroups = mutableSetOf("PLAYERS")
+                ))
+                JsonManager.save(Configs.PLAYERS_HOMES)
+            }
         }
     }
 
