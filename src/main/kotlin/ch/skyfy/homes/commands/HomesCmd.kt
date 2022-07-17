@@ -43,12 +43,12 @@ class HomesCmd {
                         EntityArgumentType.players().listSuggestions(context, suggestionBuilder)
                     }.then( // /homes player <playerName> create
                         literal("create").then(
-                            argument("homeName", StringArgumentType.string()).executes(CreateHome().CreateHomeForAnotherPlayer()).then(
+                            argument("homeName", StringArgumentType.string()).executes(CreateHomeForAnotherPlayer()).then(
                                 argument("x", DoubleArgumentType.doubleArg()).then(
                                     argument("y", DoubleArgumentType.doubleArg()).then(
                                         argument("z", DoubleArgumentType.doubleArg()).then(
                                             argument("yaw", FloatArgumentType.floatArg()).then(
-                                                argument("pitch", FloatArgumentType.floatArg()).executes(CreateHome().CreateHomeForAnotherPlayerWithCoordinates())
+                                                argument("pitch", FloatArgumentType.floatArg()).executes(CreateHomeForAnotherPlayerWithCoordinates())
                                             )
                                         )
                                     )
@@ -57,24 +57,24 @@ class HomesCmd {
                         )
                     ).then( // /homes player <playerName> delete
                         literal("delete").then(
-                            argument("homeName", StringArgumentType.string()).suggests(this::homesListForAnotherPlayer).executes(DeleteHome().DeleteHomeForAnotherPlayer())
+                            argument("homeName", StringArgumentType.string()).suggests(this::homesListForAnotherPlayer).executes(DeleteHomeForAnotherPlayer())
                         )
                     ).then( // /homes player <playerName> teleport
                         literal("teleport").then(
-                            argument("homeName", StringArgumentType.string()).suggests(this::homesListForAnotherPlayer).executes(TeleportHome().TeleportHomeToAnotherPlayer())
+                            argument("homeName", StringArgumentType.string()).suggests(this::homesListForAnotherPlayer).executes(TeleportHomeToAnotherPlayer())
                         )
                     ).then( // /homes player <playerName> list
-                        literal("list").executes(ListHome().ListHomeForAnotherPlayer())
+                        literal("list").executes(ListHomeForAnotherPlayer())
                     )
                 )
             ).then( // /homes create
                 literal("create").then(
-                    argument("homeName", StringArgumentType.string()).executes(CreateHome().CreateHome()).then(
+                    argument("homeName", StringArgumentType.string()).executes(CreateHome()).then(
                         argument("x", DoubleArgumentType.doubleArg()).then(
                             argument("y", DoubleArgumentType.doubleArg()).then(
                                 argument("z", DoubleArgumentType.doubleArg()).then(
                                     argument("yaw", FloatArgumentType.floatArg()).then(
-                                        argument("pitch", FloatArgumentType.floatArg()).executes(CreateHome().CreateHomeWithCoordinates())
+                                        argument("pitch", FloatArgumentType.floatArg()).executes(CreateHomeWithCoordinates())
                                     )
                                 )
                             )
@@ -83,14 +83,14 @@ class HomesCmd {
                 )
             ).then( // /homes delete
                 literal("delete").then(
-                    argument("homeName", StringArgumentType.string()).suggests(this::homesList).executes(DeleteHome().DeleteHome())
+                    argument("homeName", StringArgumentType.string()).suggests(this::homesList).executes(DeleteHome())
                 )
             ).then( // /homes teleport
                 literal("teleport").then(
-                    argument("homeName", StringArgumentType.string()).suggests(this::homesList).executes(TeleportHome().TeleportHome())
+                    argument("homeName", StringArgumentType.string()).suggests(this::homesList).executes(TeleportHome())
                 )
             ).then( // /homes list
-                literal("list").executes(ListHome().ListHome())
+                literal("list").executes(ListHome())
             )
         dispatcher.register(veryBigCommand)
     }

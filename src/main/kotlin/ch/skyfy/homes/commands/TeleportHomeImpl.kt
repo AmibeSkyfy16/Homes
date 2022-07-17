@@ -9,17 +9,11 @@ import ch.skyfy.homes.config.Perms
 import ch.skyfy.homes.utils.hasPermission
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
-import com.mojang.brigadier.CommandDispatcher
-import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
 import kotlinx.coroutines.*
-import net.minecraft.command.CommandSource.suggestMatching
-import net.minecraft.command.argument.EntityArgumentType
 import net.minecraft.entity.Entity
 import net.minecraft.entity.MovementType
-import net.minecraft.server.command.CommandManager.argument
-import net.minecraft.server.command.CommandManager.literal
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
@@ -31,48 +25,15 @@ import net.minecraft.util.math.Vec3d
 import java.lang.System.currentTimeMillis
 import kotlin.coroutines.CoroutineContext
 
-class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers.Default) : CoroutineScope {
-
-    //                        EntityArgumentType.players().listSuggestions(context, suggestionBuilder)
-//                        suggestionBuilder.suggest("suggest one")
-//                        suggestionBuilder.suggest("suggest two")
-//                        suggestionBuilder.suggest("suggest three")
-//                        context.source.server.playerManager.playerList.forEach {
-//                            suggestionBuilder.suggest(it.name.string)
-//                        }
-//                        suggestionBuilder.buildFuture()
+open class TeleportHomeImpl(override val coroutineContext: CoroutineContext = Dispatchers.Default) : CoroutineScope {
 
     private val teleporting: MutableMap<String, Pair<CoroutineScope, Vec3d>> = mutableMapOf()
 
     private val cooldowns: MutableMap<String, Long> = mutableMapOf()
 
     init {
-        EntityMoveCallback.EVENT.register(this::onPlayerMove)
+        EntityMoveCallback.EVENT.register(::onPlayerMove)
     }
-
-//    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
-//        val teleportHome =
-//            literal("homes").then(
-//                literal("player").then(
-//                    argument("playerName", StringArgumentType.greedyString()).suggests { _, suggestionBuilder ->
-//                        // NOT WORKS
-//                        suggestMatching(arrayOf("one", "two"), suggestionBuilder)
-//                    }.then(
-//                        literal("teleport").then(
-//                            argument("homeName", StringArgumentType.string()).executes(TeleportHomeToAnotherPlayer())
-//                        )
-//                    )
-//                )
-//            ).then(
-//                literal("teleport").then(
-//                    argument("homeName", StringArgumentType.string()).suggests{ _, suggestionBuilder ->
-//                        // WORKS
-//                        suggestMatching(arrayOf("one", "two"), suggestionBuilder)
-//                    }.executes(TeleportHome())
-//                )
-//            )
-//        dispatcher.register(teleportHome)
-//    }
 
     private fun onPlayerMove(entity: Entity, movementType: MovementType, movement: Vec3d): ActionResult {
         if (entity is ServerPlayerEntity) {
@@ -90,7 +51,7 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
         return ActionResult.PASS
     }
 
-    private fun teleportHome(spe: ServerPlayerEntity, homeName: String, requiredPerms: Perms) {
+    fun teleportHome(spe: ServerPlayerEntity, homeName: String, requiredPerms: Perms) {
 
         val player = Configs.PLAYERS_HOMES.data.players.find { spe.uuidAsString == it.uuid } ?: return
 
@@ -146,22 +107,22 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
                 (startPos.z.coerceAtLeast(nowPos.z) - startPos.z.coerceAtMost(nowPos.z) > greaterThan)
     }
 
-    inner class TeleportHome : Command<ServerCommandSource> {
-        override fun run(context: CommandContext<ServerCommandSource>): Int {
-            teleportHome(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"), Perms.TELEPORT_HOME)
-            return 0
-        }
+}
 
+class TeleportHome : TeleportHomeImpl(), Command<ServerCommandSource> {
+    override fun run(context: CommandContext<ServerCommandSource>): Int {
+        teleportHome(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"), Perms.TELEPORT_HOME)
+        return 0
     }
 
-    inner class TeleportHomeToAnotherPlayer : Command<ServerCommandSource> {
-        override fun run(context: CommandContext<ServerCommandSource>): Int {
-            val targetPlayerName = getString(context, "playerName")
-            val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
-            if (targetPlayer != null) teleportHome(targetPlayer, getString(context, "homeName"), Perms.TELEPORT_HOME_TO_ANOTHER_PLAYER)
-            else context.source?.sendFeedback(Text.literal("Player not found"), false)
-            return 0
-        }
-    }
+}
 
+class TeleportHomeToAnotherPlayer : TeleportHomeImpl(), Command<ServerCommandSource> {
+    override fun run(context: CommandContext<ServerCommandSource>): Int {
+        val targetPlayerName = getString(context, "playerName")
+        val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
+        if (targetPlayer != null) teleportHome(targetPlayer, getString(context, "homeName"), Perms.TELEPORT_HOME_TO_ANOTHER_PLAYER)
+        else context.source?.sendFeedback(Text.literal("Player not found"), false)
+        return 0
+    }
 }
