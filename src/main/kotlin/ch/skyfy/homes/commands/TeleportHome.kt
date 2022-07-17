@@ -14,6 +14,7 @@ import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
 import kotlinx.coroutines.*
+import net.minecraft.command.CommandSource.suggestMatching
 import net.minecraft.command.argument.EntityArgumentType
 import net.minecraft.entity.Entity
 import net.minecraft.entity.MovementType
@@ -52,7 +53,8 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
                         context.source.server.playerManager.playerList.forEach {
                             suggestionBuilder.suggest(it.name.string)
                         }
-                        suggestionBuilder.buildFuture()
+                        suggestMatching(arrayOf("one", "two"), suggestionBuilder)
+//                        suggestionBuilder.buildFuture()
                     }.then(
                         literal("teleport").then(
                             argument("homeName", StringArgumentType.string()).executes(TeleportHomeToAnotherPlayer())
