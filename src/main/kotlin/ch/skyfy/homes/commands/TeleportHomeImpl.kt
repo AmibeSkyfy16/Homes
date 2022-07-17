@@ -95,7 +95,7 @@ open class TeleportHomeImpl(override val coroutineContext: CoroutineContext = Di
             teleporting.remove(spe.uuidAsString)
 
             spe.server.execute {
-                spe.teleport(spe.world as ServerWorld?, home.x, home.y, home.z, home.pitch, home.yaw)
+                spe.teleport(spe.world as ServerWorld?, home.x, home.y, home.z, home.yaw, home.pitch)
                 spe.sendMessage(Text.literal("You've arrived at your destination ($homeName)").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
             }
         }
