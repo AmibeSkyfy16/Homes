@@ -2,6 +2,7 @@
 
 package ch.skyfy.homes.commands
 
+import ch.skyfy.homes.HomesMod
 import ch.skyfy.homes.callbacks.EntityMoveCallback
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Perms
@@ -13,6 +14,7 @@ import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
 import kotlinx.coroutines.*
+import net.minecraft.command.argument.EntityArgumentType
 import net.minecraft.entity.Entity
 import net.minecraft.entity.MovementType
 import net.minecraft.server.command.CommandManager.argument
@@ -30,7 +32,7 @@ import kotlin.coroutines.CoroutineContext
 
 class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers.Default) : CoroutineScope {
 
-    private val teleporting: MutableSet<Triple<ServerPlayerEntity, MutableList<CoroutineScope>, Vec3d>> = mutableSetOf()
+    private val teleporting: MutableMap<String, Pair<CoroutineScope, Vec3d>> = mutableMapOf()
 
     private val cooldowns: MutableMap<String, Long> = mutableMapOf()
 
@@ -40,30 +42,41 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
 
     fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
         val teleportHome =
-            literal("homes")
-                .then(
-                    literal("player").then(
-                        argument("playerName", StringArgumentType.string()).then(
-                            literal("teleport").then(
-                                argument("homeName", StringArgumentType.string()).executes(TeleportHomeToAnotherPlayer())
-                            )
+            literal("homes").then(
+                literal("player").then(
+                    argument("playerName", StringArgumentType.string()).suggests { context, suggestionBuilder ->
+//                        EntityArgumentType.players().listSuggestions(context, suggestionBuilder)
+                        suggestionBuilder.suggest("suggest one")
+                        suggestionBuilder.suggest("suggest two")
+                        suggestionBuilder.suggest("suggest three")
+                        context.source.server.playerManager.playerList.forEach {
+                            suggestionBuilder.suggest(it.name.string)
+                        }
+                        suggestionBuilder.buildFuture()
+                    }.then(
+                        literal("teleport").then(
+                            argument("homeName", StringArgumentType.string()).executes(TeleportHomeToAnotherPlayer())
                         )
                     )
-                ).then(
-                    literal("teleport").then(
-                        argument("homeName", StringArgumentType.string()).executes(TeleportHome())
-                    )
                 )
+            ).then(
+                literal("teleport").then(
+                    argument("homeName", StringArgumentType.string()).executes(TeleportHome())
+                )
+            )
         dispatcher.register(teleportHome)
     }
 
     private fun onPlayerMove(entity: Entity, movementType: MovementType, movement: Vec3d): ActionResult {
         if (entity is ServerPlayerEntity) {
-            teleporting.find { triple -> triple.first === entity }?.let {
-                if (isDistanceGreaterThan(it.third, entity.pos, 2)) {
+            if (teleporting.containsKey(entity.uuidAsString)) {
+                val value = teleporting[entity.uuidAsString]!!
+                if (isDistanceGreaterThan(value.second, entity.pos, 2)) {
+                    value.first.cancel()
+                    teleporting.remove(entity.uuidAsString)
+                    HomesMod.LOGGER.info("CANCELLED TELEPORT")
                     entity.sendMessage(Text.literal("You moved ! teleportation cancelled !").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-                    it.second.first().cancel()
-                    teleporting.remove(it)
+                    return ActionResult.PASS
                 }
             }
         }
@@ -88,9 +101,7 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
 
         launch {
 
-            val t = teleporting.find { it.first === spe }
-
-            if (t != null) {
+            if (teleporting.containsKey(spe.uuidAsString)) {
                 spe.sendMessage(Text.literal("A teleportation is already in progress").setStyle(Style.EMPTY.withColor(Formatting.RED)))
                 return@launch
             }
@@ -105,19 +116,15 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
                 }
             }
 
-            val triple = Triple(spe, mutableListOf(this), Vec3d(spe.pos.x, spe.pos.y, spe.pos.z))
-            teleporting.add(triple)
+            teleporting.putIfAbsent(spe.uuidAsString, Pair(this@launch, Vec3d(spe.pos.x, spe.pos.y, spe.pos.z)))
 
-            runBlocking {
-//                triple.second.add(this)
-                repeat(player.standStill) { second ->
-                    spe.sendMessage(Text.literal("${player.standStill - second} seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
-                    delay(1000L)
-                }
+            repeat(player.standStill) { second ->
+                spe.sendMessage(Text.literal("${player.standStill - second} seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
+                delay(1000L)
             }
 
             cooldowns[spe.uuidAsString] = currentTimeMillis()
-            teleporting.remove(triple)
+            teleporting.remove(spe.uuidAsString)
 
             spe.server.execute {
                 spe.teleport(spe.world as ServerWorld?, home.x, home.y, home.z, home.pitch, home.yaw)
