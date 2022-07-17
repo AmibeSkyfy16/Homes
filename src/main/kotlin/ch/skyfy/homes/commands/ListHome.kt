@@ -9,6 +9,7 @@ import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
+import net.minecraft.command.CommandSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.command.CommandManager.argument
 import net.minecraft.server.command.CommandManager.literal
@@ -19,21 +20,24 @@ import net.minecraft.util.Formatting
 
 class ListHome {
 
-    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
-        val listHome =
-            literal("homes")
-                .then(
-                    literal("player").then(
-                        argument("playerName", StringArgumentType.string()).then(
-                            literal("list").executes(ListHomeForAnotherPlayer())
-                        )
-                    )
-                )
-                .then(
-                    literal("list").executes(ListHome())
-                )
-        dispatcher.register(listHome)
-    }
+//    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
+//        val listHome =
+//            literal("homes")
+//                .then(
+//                    literal("player").then(
+//                        argument("playerName", StringArgumentType.string()).suggests { _, suggestionBuilder ->
+//                            // NOT WORKS
+//                            CommandSource.suggestMatching(arrayOf("one", "two"), suggestionBuilder)
+//                        }.then(
+//                            literal("list").executes(ListHomeForAnotherPlayer())
+//                        )
+//                    )
+//                )
+//                .then(
+//                    literal("list").executes(ListHome())
+//                )
+//        dispatcher.register(listHome)
+//    }
 
     fun listHome(
         playerEntity: PlayerEntity,

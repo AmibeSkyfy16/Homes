@@ -33,6 +33,15 @@ import kotlin.coroutines.CoroutineContext
 
 class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers.Default) : CoroutineScope {
 
+    //                        EntityArgumentType.players().listSuggestions(context, suggestionBuilder)
+//                        suggestionBuilder.suggest("suggest one")
+//                        suggestionBuilder.suggest("suggest two")
+//                        suggestionBuilder.suggest("suggest three")
+//                        context.source.server.playerManager.playerList.forEach {
+//                            suggestionBuilder.suggest(it.name.string)
+//                        }
+//                        suggestionBuilder.buildFuture()
+
     private val teleporting: MutableMap<String, Pair<CoroutineScope, Vec3d>> = mutableMapOf()
 
     private val cooldowns: MutableMap<String, Long> = mutableMapOf()
@@ -41,33 +50,29 @@ class TeleportHome(override val coroutineContext: CoroutineContext = Dispatchers
         EntityMoveCallback.EVENT.register(this::onPlayerMove)
     }
 
-    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
-        val teleportHome =
-            literal("homes").then(
-                literal("player").then(
-                    argument("playerName", StringArgumentType.string()).suggests { context, suggestionBuilder ->
-//                        EntityArgumentType.players().listSuggestions(context, suggestionBuilder)
-                        suggestionBuilder.suggest("suggest one")
-                        suggestionBuilder.suggest("suggest two")
-                        suggestionBuilder.suggest("suggest three")
-                        context.source.server.playerManager.playerList.forEach {
-                            suggestionBuilder.suggest(it.name.string)
-                        }
-                        suggestMatching(arrayOf("one", "two"), suggestionBuilder)
-//                        suggestionBuilder.buildFuture()
-                    }.then(
-                        literal("teleport").then(
-                            argument("homeName", StringArgumentType.string()).executes(TeleportHomeToAnotherPlayer())
-                        )
-                    )
-                )
-            ).then(
-                literal("teleport").then(
-                    argument("homeName", StringArgumentType.string()).executes(TeleportHome())
-                )
-            )
-        dispatcher.register(teleportHome)
-    }
+//    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
+//        val teleportHome =
+//            literal("homes").then(
+//                literal("player").then(
+//                    argument("playerName", StringArgumentType.greedyString()).suggests { _, suggestionBuilder ->
+//                        // NOT WORKS
+//                        suggestMatching(arrayOf("one", "two"), suggestionBuilder)
+//                    }.then(
+//                        literal("teleport").then(
+//                            argument("homeName", StringArgumentType.string()).executes(TeleportHomeToAnotherPlayer())
+//                        )
+//                    )
+//                )
+//            ).then(
+//                literal("teleport").then(
+//                    argument("homeName", StringArgumentType.string()).suggests{ _, suggestionBuilder ->
+//                        // WORKS
+//                        suggestMatching(arrayOf("one", "two"), suggestionBuilder)
+//                    }.executes(TeleportHome())
+//                )
+//            )
+//        dispatcher.register(teleportHome)
+//    }
 
     private fun onPlayerMove(entity: Entity, movementType: MovementType, movement: Vec3d): ActionResult {
         if (entity is ServerPlayerEntity) {

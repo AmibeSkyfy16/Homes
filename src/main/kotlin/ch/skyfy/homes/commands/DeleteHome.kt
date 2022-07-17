@@ -10,6 +10,7 @@ import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
+import net.minecraft.command.CommandSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.command.CommandManager.argument
 import net.minecraft.server.command.CommandManager.literal
@@ -20,25 +21,28 @@ import net.minecraft.util.Formatting
 
 class DeleteHome {
 
-    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
-        val deleteHome =
-            literal("homes")
-                .then(
-                    literal("player").then(
-                        argument("playerName", StringArgumentType.string()).then(
-                            literal("delete").then(
-                                argument("homeName", StringArgumentType.string()).executes(DeleteHomeForAnotherPlayer())
-                            )
-                        )
-                    )
-                )
-                .then(
-                    literal("delete").then(
-                        argument("homeName", StringArgumentType.string()).executes(DeleteHome())
-                    )
-                )
-        dispatcher.register(deleteHome)
-    }
+//    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
+//        val deleteHome =
+//            literal("homes")
+//                .then(
+//                    literal("player").then(
+//                        argument("playerName", StringArgumentType.string()).suggests { _, suggestionBuilder ->
+//                            // NOT WORKS
+//                            CommandSource.suggestMatching(arrayOf("one", "two"), suggestionBuilder)
+//                        }.then(
+//                            literal("delete").then(
+//                                argument("homeName", StringArgumentType.string()).executes(DeleteHomeForAnotherPlayer())
+//                            )
+//                        )
+//                    )
+//                )
+//                .then(
+//                    literal("delete").then(
+//                        argument("homeName", StringArgumentType.string()).executes(DeleteHome())
+//                    )
+//                )
+//        dispatcher.register(deleteHome)
+//    }
 
     fun deleteHome(
         playerEntity: PlayerEntity,

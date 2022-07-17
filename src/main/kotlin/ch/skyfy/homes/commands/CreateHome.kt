@@ -15,53 +15,57 @@ import com.mojang.brigadier.arguments.FloatArgumentType.getFloat
 import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
+import net.minecraft.command.CommandSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.command.CommandManager.argument
 import net.minecraft.server.command.CommandManager.literal
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.text.Text
 
-class CreateHome {
+open class CreateHome {
 
-    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
-        val createHome =
-            literal("homes")
-                .then(
-                    literal("player").then(
-                        argument("playerName", StringArgumentType.string()).then(
-                            literal("create").then(
-                                argument("homeName", StringArgumentType.string()).executes(CreateHomeForAnotherPlayer()).then(
-                                    argument("x", DoubleArgumentType.doubleArg()).then(
-                                        argument("y", DoubleArgumentType.doubleArg()).then(
-                                            argument("z", DoubleArgumentType.doubleArg()).then(
-                                                argument("yaw", FloatArgumentType.floatArg()).then(
-                                                    argument("pitch", FloatArgumentType.floatArg()).executes(CreateHomeForAnotherPlayerWithCoordinates())
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-                .then(
-                    literal("create").then(
-                        argument("homeName", StringArgumentType.string()).executes(CreateHome()) .then(
-                            argument("x", DoubleArgumentType.doubleArg()).then(
-                                argument("y", DoubleArgumentType.doubleArg()).then(
-                                    argument("z", DoubleArgumentType.doubleArg()).then(
-                                        argument("yaw", FloatArgumentType.floatArg()).then(
-                                            argument("pitch", FloatArgumentType.floatArg()).executes(CreateHomeWithCoordinates())
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-        dispatcher.register(createHome)
-    }
+//    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
+//        val createHome =
+//            literal("homes")
+//                .then(
+//                    literal("player").then(
+//                        argument("playerName", StringArgumentType.string()).suggests { _, suggestionBuilder ->
+//                            // NOT WORKS
+//                            CommandSource.suggestMatching(arrayOf("one", "two"), suggestionBuilder)
+//                        }.then(
+//                            literal("create").then(
+//                                argument("homeName", StringArgumentType.string()).executes(CreateHomeForAnotherPlayer()).then(
+//                                    argument("x", DoubleArgumentType.doubleArg()).then(
+//                                        argument("y", DoubleArgumentType.doubleArg()).then(
+//                                            argument("z", DoubleArgumentType.doubleArg()).then(
+//                                                argument("yaw", FloatArgumentType.floatArg()).then(
+//                                                    argument("pitch", FloatArgumentType.floatArg()).executes(CreateHomeForAnotherPlayerWithCoordinates())
+//                                                )
+//                                            )
+//                                        )
+//                                    )
+//                                )
+//                            )
+//                        )
+//                    )
+//                )
+//                .then(
+//                    literal("create").then(
+//                        argument("homeName", StringArgumentType.string()).executes(CreateHome()).then(
+//                            argument("x", DoubleArgumentType.doubleArg()).then(
+//                                argument("y", DoubleArgumentType.doubleArg()).then(
+//                                    argument("z", DoubleArgumentType.doubleArg()).then(
+//                                        argument("yaw", FloatArgumentType.floatArg()).then(
+//                                            argument("pitch", FloatArgumentType.floatArg()).executes(CreateHomeWithCoordinates())
+//                                        )
+//                                    )
+//                                )
+//                            )
+//                        )
+//                    )
+//                )
+//        dispatcher.register(createHome)
+//    }
 
     fun addHomeToPlayer(
         playerEntity: PlayerEntity,
@@ -101,7 +105,7 @@ class CreateHome {
         playerEntity.sendMessage(Text.literal("New home added"))
     }
 
-    inner class CreateHome : Command<ServerCommandSource> {
+     inner class CreateHome : Command<ServerCommandSource> {
         override fun run(context: CommandContext<ServerCommandSource>): Int {
             addHomeToPlayer(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"), Perms.CREATE_HOME)
             return 0
@@ -125,7 +129,7 @@ class CreateHome {
         }
     }
 
-    inner class CreateHomeForAnotherPlayer : Command<ServerCommandSource> {
+     inner class CreateHomeForAnotherPlayer : Command<ServerCommandSource> {
         override fun run(context: CommandContext<ServerCommandSource>): Int {
             val targetPlayerName = getString(context, "playerName")
             val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
@@ -135,7 +139,7 @@ class CreateHome {
         }
     }
 
-    inner class CreateHomeForAnotherPlayerWithCoordinates : Command<ServerCommandSource> {
+     inner class CreateHomeForAnotherPlayerWithCoordinates : Command<ServerCommandSource> {
         override fun run(context: CommandContext<ServerCommandSource>): Int {
             val targetPlayerName = getString(context, "playerName")
             val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)

@@ -42,10 +42,7 @@ class HomesMod : DedicatedServerModInitializer {
 
     private fun registerCommands() {
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
-            CreateHome().register(dispatcher)
-            DeleteHome().register(dispatcher)
-            TeleportHome().register(dispatcher)
-            ListHome().register(dispatcher)
+            HomesCmd().register(dispatcher)
             ReloadConfig().register(dispatcher)
         }
     }
