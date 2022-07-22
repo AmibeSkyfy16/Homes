@@ -13,6 +13,8 @@ import net.fabricmc.loader.api.FabricLoader
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.nio.file.Path
+import net.minecraft.network.message.*;
+import net.minecraft.text.Text.translatable
 
 @Suppress("MemberVisibilityCanBePrivate")
 class HomesMod : DedicatedServerModInitializer {
@@ -32,6 +34,9 @@ class HomesMod : DedicatedServerModInitializer {
         registerCommands()
 
         ServerPlayConnectionEvents.JOIN.register{ handler, _, _ ->
+
+            handler.player.sendMessage(translatable("chat.test"))
+
             if(Configs.PLAYERS_HOMES.data.players.stream().noneMatch { it.uuid ==  handler.player.uuidAsString}){
                 Configs.PLAYERS_HOMES.data.players.add(Player(
                     uuid = handler.player.uuidAsString,

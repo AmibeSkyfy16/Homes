@@ -23,6 +23,6 @@
     "fabricloader": ">=0.14.8",
     "fabric": "*",
     "minecraft": "1.19",
-    "fabric-language-kotlin": ">=1.8.1+kotlin.1.7.0"
+    "fabric-language-kotlin": ">=1.8.2+kotlin.1.7.10"
   }
 }
