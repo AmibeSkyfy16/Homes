@@ -43,9 +43,11 @@ plugins {
     idea
 }
 
-val archivesBaseName = property("archives_base_name")
-group = property("maven_group")!!
-version = property("mod_version")!!
+base {
+    archivesName.set(properties["archives_name"].toString())
+    group = property("maven_group")!!
+    version = property("mod_version")!!
+}
 
 repositories {
     mavenCentral()
@@ -85,6 +87,11 @@ tasks {
         withSourcesJar()
     }
 
+    named<Wrapper>("wrapper") {
+        gradleVersion = "7.5.1"
+        distributionType = Wrapper.DistributionType.ALL
+    }
+
     named<KotlinCompile>("compileKotlin") {
         kotlinOptions.jvmTarget = javaVersion.toString()
     }
@@ -96,7 +103,7 @@ tasks {
 
     named<Jar>("jar") {
         from("LICENSE") {
-            rename { "${it}_${archivesBaseName}" }
+            rename { "${it}_${base.archivesName}" }
         }
     }
 
