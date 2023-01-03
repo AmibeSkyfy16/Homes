@@ -18,11 +18,11 @@ fun listHome(
     requiredPerms: Perms
 ) {
 
-    val player = Configs.PLAYERS_HOMES.data.players.find { playerEntity.uuidAsString == it.uuid } ?: return
+    val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
 
     // Check for permission
     if (!hasPermission(player, requiredPerms)) {
-        playerEntity.sendMessage(Text.literal("/homes delete <homeName> command required ${requiredPerms.name} permission"))
+        playerEntity.sendMessage(Text.literal("/homes list command required ${requiredPerms.name} permission"))
         return
     }
 

@@ -7,9 +7,9 @@ import ch.skyfy.homes.config.Player
 import kotlin.io.path.createDirectory
 import kotlin.io.path.exists
 
-fun setupConfigDirectory(){
+fun setupConfigDirectory() {
     try {
-        if(!HomesMod.CONFIG_DIRECTORY.exists()) HomesMod.CONFIG_DIRECTORY.createDirectory()
+        if (!HomesMod.CONFIG_DIRECTORY.exists()) HomesMod.CONFIG_DIRECTORY.createDirectory()
     } catch (e: java.lang.Exception) {
         HomesMod.LOGGER.fatal("An exception occurred. Could not create the root folder that should contain the configuration files")
         throw RuntimeException(e)
@@ -19,8 +19,8 @@ fun setupConfigDirectory(){
 fun hasPermission(player: Player, perms: Perms): Boolean {
     var has = false
     player.permsGroups.forEach { group ->
-        Configs.GROUPS_PERMS.data.groups[group]?.let { permsList ->
-            has = permsList.contains(perms)  || permsList.contains(Perms.ALL)
+        Configs.GROUPS_PERMS.serializableData.groups[group]?.let { permsList ->
+            has = permsList.contains(perms) || permsList.contains(Perms.ALL)
         }
     }
     return has

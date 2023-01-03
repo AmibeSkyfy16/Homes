@@ -37,9 +37,9 @@ fun DependencyHandlerScope.handleIncludes(project: Project, configuration: Confi
 }
 
 plugins {
-    id("fabric-loom") version "0.12-SNAPSHOT"
-    id("org.jetbrains.kotlin.jvm") version "1.7.10"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.7.10"
+    id("fabric-loom") version "1.0-SNAPSHOT"
+    id("org.jetbrains.kotlin.jvm") version "1.8.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"
     idea
 }
 
@@ -51,7 +51,6 @@ base {
 
 repositories {
     mavenCentral()
-    mavenLocal()
     maven("https://repo.repsy.io/mvn/amibeskyfy16/repo") // Use for my JsonConfig lib
 }
 
@@ -64,11 +63,11 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
 
     transitiveInclude(implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4")!!)
-    transitiveInclude(implementation("ch.skyfy.jsonconfig:json-config:2.1.4")!!)
+    transitiveInclude(implementation("ch.skyfy.jsonconfiglib:json-config-lib:3.0.12")!!)
 
     handleIncludes(project, transitiveInclude)
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.7.10")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.8.0")
 }
 
 tasks {
@@ -83,13 +82,11 @@ tasks {
         }
     }
 
-    java {
-        withSourcesJar()
-    }
+    java { withSourcesJar() }
 
     named<Wrapper>("wrapper") {
-        gradleVersion = "7.5.1"
-        distributionType = Wrapper.DistributionType.ALL
+        gradleVersion = "7.6"
+        distributionType = Wrapper.DistributionType.BIN
     }
 
     named<KotlinCompile>("compileKotlin") {
@@ -116,4 +113,13 @@ tasks {
         }
     }
 
+    val copyJarToTestServer = register("copyJarToTestServer") {
+        println("copy to server")
+        copyFile("build/libs/homes-${project.properties["mod_version"]}.jar", project.property("testServerModsFolder") as String)
+    }
+
+    build { doLast { copyJarToTestServer.get() } }
+
 }
+
+fun copyFile(src: String, dest: String) = copy { from(src);into(dest) }

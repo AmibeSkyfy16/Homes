@@ -2,8 +2,9 @@ package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Perms
+import ch.skyfy.homes.config.Player
 import ch.skyfy.homes.utils.hasPermission
-import ch.skyfy.jsonconfig.JsonManager
+import ch.skyfy.jsonconfiglib.updateIterableNested
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
@@ -20,7 +21,7 @@ fun deleteHome(
     requiredPerms: Perms
 ) {
 
-    val player = Configs.PLAYERS_HOMES.data.players.find { playerEntity.uuidAsString == it.uuid } ?: return
+    val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
 
     // Check for permission
     if (!hasPermission(player, requiredPerms)) {
@@ -29,13 +30,12 @@ fun deleteHome(
     }
 
     // Check for home duplication
-    if(player.homes.removeIf{it.name == homeName}){
-        playerEntity.sendMessage(Text.literal("The home $homeName has been successfully removed").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
-    }else{
-        playerEntity.sendMessage(Text.literal("The home $homeName can not be removed because it does not exist").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+    Configs.PLAYERS_HOMES.updateIterableNested(Player::homes, player.homes){
+        if(it.removeIf{it.name == homeName})
+            playerEntity.sendMessage(Text.literal("The home $homeName has been successfully removed").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
+        else
+            playerEntity.sendMessage(Text.literal("The home $homeName can not be removed because it does not exist").setStyle(Style.EMPTY.withColor(Formatting.RED)))
     }
-
-    JsonManager.save(Configs.PLAYERS_HOMES)
 }
 
 class DeleteHome : Command<ServerCommandSource> {

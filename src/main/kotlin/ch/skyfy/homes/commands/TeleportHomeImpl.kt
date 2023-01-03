@@ -54,7 +54,7 @@ open class TeleportHomeImpl(override val coroutineContext: CoroutineContext = Di
 
     fun teleportHome(spe: ServerPlayerEntity, homeName: String, requiredPerms: Perms) {
 
-        val player = Configs.PLAYERS_HOMES.data.players.find { spe.uuidAsString == it.uuid } ?: return
+        val player = Configs.PLAYERS_HOMES.serializableData.players.find { spe.uuidAsString == it.uuid } ?: return
 
         // Check for permission
         if (!hasPermission(player, requiredPerms)) {

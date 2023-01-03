@@ -21,13 +21,13 @@ class HomesCmd {
     private fun <S : ServerCommandSource> homesListForAnotherPlayer(commandContext: CommandContext<S>, suggestionsBuilder: SuggestionsBuilder): CompletableFuture<Suggestions> {
         val targetPlayerName = StringArgumentType.getString(commandContext, "playerName")
         val spe = commandContext.source.server.playerManager.getPlayer(targetPlayerName) ?: return suggestionsBuilder.buildFuture()
-        val player = Configs.PLAYERS_HOMES.data.players.find { it.uuid == spe.uuidAsString} ?: return suggestionsBuilder.buildFuture()
+        val player = Configs.PLAYERS_HOMES.serializableData.players.find { it.uuid == spe.uuidAsString} ?: return suggestionsBuilder.buildFuture()
         return homesListImpl(suggestionsBuilder, player)
     }
 
     private fun <S : ServerCommandSource> homesList(commandContext: CommandContext<S>, suggestionsBuilder: SuggestionsBuilder): CompletableFuture<Suggestions> {
         val spe = commandContext.source.player ?: return suggestionsBuilder.buildFuture()
-        val player = Configs.PLAYERS_HOMES.data.players.find { it.uuid == spe.uuidAsString} ?: return suggestionsBuilder.buildFuture()
+        val player = Configs.PLAYERS_HOMES.serializableData.players.find { it.uuid == spe.uuidAsString} ?: return suggestionsBuilder.buildFuture()
         return homesListImpl(suggestionsBuilder, player)
     }
 
@@ -91,6 +91,8 @@ class HomesCmd {
                 )
             ).then( // /homes list
                 literal("list").executes(ListHome())
+            ).then( // /homes reloadConfigs
+                literal("reloadConfigs").executes(ReloadConfig())
             )
         dispatcher.register(veryBigCommand)
     }

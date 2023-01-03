@@ -4,9 +4,10 @@ import ch.skyfy.homes.commands.HomesCmd
 import ch.skyfy.homes.commands.ReloadConfig
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Player
+import ch.skyfy.homes.config.PlayersHomesConfig
 import ch.skyfy.homes.utils.setupConfigDirectory
-import ch.skyfy.jsonconfig.JsonConfig
-import ch.skyfy.jsonconfig.JsonManager
+import ch.skyfy.jsonconfiglib.ConfigManager
+import ch.skyfy.jsonconfiglib.updateIterable
 import net.fabricmc.api.DedicatedServerModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
@@ -27,32 +28,26 @@ class HomesMod : DedicatedServerModInitializer {
 
     init {
         setupConfigDirectory()
-        JsonConfig.loadConfigs(arrayOf(Configs.javaClass))
+        ConfigManager.loadConfigs(arrayOf(Configs.javaClass))
     }
 
     override fun onInitializeServer() {
         registerCommands()
 
         ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
-
-            handler.player.sendMessage(translatable("chat.test"))
-
-            if (Configs.PLAYERS_HOMES.data.players.stream().noneMatch { it.uuid == handler.player.uuidAsString }) {
-                Configs.PLAYERS_HOMES.data.players.add(
-                    Player(
-                        uuid = handler.player.uuidAsString,
-                        permsGroups = mutableSetOf("PLAYERS")
-                    )
-                )
-                JsonManager.save(Configs.PLAYERS_HOMES)
+            Configs.PLAYERS_HOMES.updateIterable(PlayersHomesConfig::players) {
+                if (it.none { player -> player.uuid == handler.player.uuidAsString })
+                    it.add(Player(uuid = handler.player.uuidAsString, permsGroups = mutableSetOf("PLAYERS")))
             }
+
+//            handler.player.sendMessage(translatable("chat.test"))
         }
     }
 
     private fun registerCommands() {
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
             HomesCmd().register(dispatcher)
-            ReloadConfig().register(dispatcher)
+//            ReloadConfig().register(dispatcher)
         }
     }
 

@@ -1,7 +1,7 @@
 package ch.skyfy.homes.config
 
-import ch.skyfy.jsonconfig.Defaultable
-import ch.skyfy.jsonconfig.Validatable
+import ch.skyfy.jsonconfiglib.Defaultable
+import ch.skyfy.jsonconfiglib.Validatable
 import kotlinx.serialization.Serializable
 
 @Serializable

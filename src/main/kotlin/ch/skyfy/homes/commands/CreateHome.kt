@@ -3,8 +3,9 @@ package ch.skyfy.homes.commands
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Home
 import ch.skyfy.homes.config.Perms
+import ch.skyfy.homes.config.Player
 import ch.skyfy.homes.utils.hasPermission
-import ch.skyfy.jsonconfig.JsonManager
+import ch.skyfy.jsonconfiglib.updateIterableNested
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.DoubleArgumentType.getDouble
@@ -26,7 +27,7 @@ fun addHomeToPlayer(
     yaw: Float = playerEntity.yaw
 ) {
 
-    val player = Configs.PLAYERS_HOMES.data.players.find { playerEntity.uuidAsString == it.uuid } ?: return
+    val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
 
     // Check for permission
     if (!hasPermission(player, requiredPerms)) {
@@ -46,9 +47,9 @@ fun addHomeToPlayer(
         return
     }
 
-    player.homes.add(Home(x, y, z, pitch, yaw, homeName))
-
-    JsonManager.save(Configs.PLAYERS_HOMES)
+    Configs.PLAYERS_HOMES.updateIterableNested(Player::homes, player.homes){
+        it.add(Home(x, y, z, pitch, yaw, homeName))
+    }
 
     playerEntity.sendMessage(Text.literal("New home added"))
 }
