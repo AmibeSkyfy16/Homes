@@ -1,18 +1,15 @@
 package ch.skyfy.homes
 
 import ch.skyfy.homes.commands.HomesCmd
-import ch.skyfy.homes.commands.ReloadConfig
-import ch.skyfy.homes.config.Configs
-import ch.skyfy.homes.config.Player
-import ch.skyfy.homes.config.PlayersHomesConfig
+import ch.skyfy.homes.config.*
 import ch.skyfy.homes.utils.setupConfigDirectory
 import ch.skyfy.jsonconfiglib.ConfigManager
 import ch.skyfy.jsonconfiglib.updateIterable
+import ch.skyfy.jsonconfiglib.updateMap
 import net.fabricmc.api.DedicatedServerModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.loader.api.FabricLoader
-import net.minecraft.text.Text.translatable
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.nio.file.Path
@@ -35,20 +32,24 @@ class HomesMod : DedicatedServerModInitializer {
         registerCommands()
 
         ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
+
+            val playerId = handler.player.name.string + "#" + handler.player.uuidAsString
+
             Configs.PLAYERS_HOMES.updateIterable(PlayersHomesConfig::players) {
                 if (it.none { player -> player.uuid == handler.player.uuidAsString })
-                    it.add(Player(uuid = handler.player.uuidAsString, permsGroups = mutableSetOf("PLAYERS")))
+                    it.add(Player(uuid = handler.player.uuidAsString, handler.player.name.string, "SHORT"))
+            }
+
+            Configs.PERMISSION_CONFIG.updateMap(PermissionsConfig::players) {
+                if (!it.containsKey(playerId)) {
+                    it[playerId] = PlayerPerms(mutableListOf("DEFAULT"), mutableListOf())
+                }
             }
 
 //            handler.player.sendMessage(translatable("chat.test"))
         }
     }
 
-    private fun registerCommands() {
-        CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
-            HomesCmd().register(dispatcher)
-//            ReloadConfig().register(dispatcher)
-        }
-    }
+    private fun registerCommands() = CommandRegistrationCallback.EVENT.register { dispatcher, _, _ -> HomesCmd().register(dispatcher) }
 
 }
