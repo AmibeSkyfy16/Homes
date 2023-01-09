@@ -1,7 +1,6 @@
 package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.config.Configs
-import ch.skyfy.homes.utils.hasPermission
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -18,10 +17,10 @@ fun listHome(
 
     val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
 
-    if (!hasPermission(player, permission)) {
-        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-        return
-    }
+//    if (!hasPermission(player, permission)) {
+//        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+//        return
+//    }
 
     player.homes.forEach {
         playerEntity.sendMessage(Text.literal("- ${it.name}").setStyle(Style.EMPTY.withColor(Formatting.DARK_PURPLE)))

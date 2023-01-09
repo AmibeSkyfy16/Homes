@@ -4,7 +4,7 @@ import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Home
 import ch.skyfy.homes.config.Player
 import ch.skyfy.homes.utils.getGroupRules
-import ch.skyfy.homes.utils.hasPermission
+//import ch.skyfy.homes.utils.hasPermission
 import ch.skyfy.jsonconfiglib.updateIterableNested
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
@@ -32,14 +32,14 @@ fun addHomeToPlayer(
     val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
     val rule = getGroupRules(player) ?: return
 
-    if (!hasPermission(player, permission)) {
-        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-        return
-    }
+//    if (!hasPermission(player, permission)) {
+//        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+//        return
+//    }
 
     // Check for home duplication
     player.homes.find { homeName == it.name }?.let {
-        playerEntity.sendMessage(Text.literal("You have already a home named $homeName").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+        playerEntity.sendMessage(Text.literal("You already have a home named $homeName").setStyle(Style.EMPTY.withColor(Formatting.RED)))
         return
     }
 

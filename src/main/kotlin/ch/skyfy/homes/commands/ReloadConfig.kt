@@ -16,7 +16,7 @@ class ReloadConfig : Command<ServerCommandSource> {
     override fun run(context: CommandContext<ServerCommandSource>): Int {
         val list = mutableListOf<Boolean>()
         list.add(ConfigManager.reloadConfig(Configs.PLAYERS_HOMES))
-        list.add(ConfigManager.reloadConfig(Configs.PERMISSION_CONFIG))
+//        list.add(ConfigManager.reloadConfig(Configs.PERMISSION_CONFIG))
         if(list.contains(false)){
             context.source.sendFeedback(Text.literal("Configuration could not be reloaded"), false)
             HomesMod.LOGGER.warn("Configuration could not be reloaded")

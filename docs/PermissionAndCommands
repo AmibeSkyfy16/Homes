@@ -1,21 +1,26 @@
 /homes create <name>
     desc: Create a home for the player who typed the command
+    permission level: 0
     required permission: CREATE_HOME
 
 /homes create <name> <x> <y> <z> <yaw> <pitch>
     desc: Create a home for the player who typed the command with the specific coordinate
+    permission level: 4
     permission: CREATE_HOME_WITH_COORDINATES
 
 /homes delete <name>
     desc: Delete specified home for the player who typed the command
+    permission level: 0
     permission: DELETE_HOME
 
 /homes teleport <name>
     desc: Teleport the player who typed the command to her home
+    permission level: 0
     permission: TELEPORT_HOME
 
 /homes list
     desc: Print a list of all created homes for the player who typed the command
+    permission level: 0
     permission: LIST_HOME
 
 
@@ -24,20 +29,25 @@
 
 /homes player <player name> create <name>
     desc: Create a home for the player that has been specified in the command
+    permission level: 4
     required permission: CREATE_HOME_FOR_ANOTHER_PLAYER
 
 /homes player <player name> create <name> <x> <y> <z> <yaw> <pitch>
     desc: Create a home for the player that has been specified in the command with the specific coordinate
+    permission level: 4
     required permission: CREATE_HOME_FOR_ANOTHER_PLAYER_WITH_COORDINATES
 
 /homes player <player name> delete <name>
     desc: Delete a home for the player that has been specified in the command
+    permission level: 4
     required permission: DELETE_HOME_FOR_ANOTHER_PLAYER
 
 /homes player <player name> teleport <name>
     desc: Teleport the player who typed the command to the home of the player specified in the command
+    permission level: 4
     required permission: TELEPORT_HOME_TO_ANOTHER_PLAYER
 
 /homes player <player name> list
     desc: Print a list of all created homes for the player specified in the command
+    permission level: 4
     required permission: LIST_HOME_FOR_ANOTHER_PLAYER

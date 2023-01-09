@@ -14,8 +14,8 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder
 import com.mojang.brigadier.tree.CommandNode
 import net.minecraft.command.CommandSource.suggestMatching
 import net.minecraft.command.argument.EntityArgumentType
-import net.minecraft.server.command.CommandManager.argument
-import net.minecraft.server.command.CommandManager.literal
+import net.minecraft.server.command.AdvancementCommand
+import net.minecraft.server.command.CommandManager.*
 import net.minecraft.server.command.ServerCommandSource
 import java.util.concurrent.CompletableFuture
 
@@ -39,9 +39,9 @@ class HomesCmd {
     }
 
     fun register(dispatcher: CommandDispatcher<ServerCommandSource>) {
-        val veryBigCommand = literal("homes")
+        val veryBigCommand = literal("homes").requires { source -> source.hasPermissionLevel(0) }
             .then(
-                literal("player").then(
+                literal("player").requires { source -> source.hasPermissionLevel(4) }.then(
                     argument("playerName", StringArgumentType.string()).suggests { context, suggestionBuilder ->
                         EntityArgumentType.players().listSuggestions(context, suggestionBuilder)
                     }.then( // /homes player <playerName> create
@@ -73,7 +73,7 @@ class HomesCmd {
             ).then( // /homes create
                 literal("create").then(
                     argument("homeName", StringArgumentType.string()).executes(CreateHome("homes.commands.homes.create")).then(
-                        argument("x", DoubleArgumentType.doubleArg()).then(
+                        argument("x", DoubleArgumentType.doubleArg()).requires { source -> source.hasPermissionLevel(4) }.then(
                             argument("y", DoubleArgumentType.doubleArg()).then(
                                 argument("z", DoubleArgumentType.doubleArg()).then(
                                     argument("yaw", FloatArgumentType.floatArg()).then(
@@ -100,34 +100,34 @@ class HomesCmd {
         dispatcher.register(veryBigCommand)
 
 
-        dispatcher.root.children.forEach {
-            if (it.name != "homes") return@forEach
-            registerCommandsInConfig(it)
-        }
+//        dispatcher.root.children.forEach {
+//            if (it.name != "homes") return@forEach
+//            registerCommandsInConfig(it)
+//        }
 
-        Configs.COMMANDS_AND_PERMISSIONS_LIST.updateMap(CommandsAndPermissionsInformation::map) { it.putAll(map) }
+//        Configs.COMMANDS_AND_PERMISSIONS_LIST.updateMap(CommandsAndPermissionsInformation::map) { it.putAll(map) }
 
     }
 
-    private val map = mutableMapOf<String, String>()
+//    private val map = mutableMapOf<String, String>()
 
-    private fun registerCommandsInConfig(origin: CommandNode<ServerCommandSource>, children: CommandNode<ServerCommandSource> = origin, deep: Int = 0, sb: StringBuilder = StringBuilder(children.name)): StringBuilder {
-        if (deep > 0) sb.append(" " + children.usageText)
-
-
-        if (children.children.isEmpty()) {
-
-            var perm = ""
-            if (children.command is Permission) perm = (children.command as Permission).permission
-            map[sb.toString()] = perm
-
-            return sb.clear().append(origin.name)
-        }
-
-        if (children.command is Permission) map[sb.toString()] = (children.command as Permission).permission
-
-        children.children.forEach { registerCommandsInConfig(origin, it, deep + 1, sb) }
-        return sb
-    }
+//    private fun registerCommandsInConfig(origin: CommandNode<ServerCommandSource>, children: CommandNode<ServerCommandSource> = origin, deep: Int = 0, sb: StringBuilder = StringBuilder(children.name)): StringBuilder {
+//        if (deep > 0) sb.append(" " + children.usageText)
+//
+//
+//        if (children.children.isEmpty()) {
+//
+//            var perm = ""
+//            if (children.command is Permission) perm = (children.command as Permission).permission
+//            map[sb.toString()] = perm
+//
+//            return sb.clear().append(origin.name)
+//        }
+//
+//        if (children.command is Permission) map[sb.toString()] = (children.command as Permission).permission
+//
+//        children.children.forEach { registerCommandsInConfig(origin, it, deep + 1, sb) }
+//        return sb
+//    }
 
 }

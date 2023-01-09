@@ -2,7 +2,7 @@ package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Player
-import ch.skyfy.homes.utils.hasPermission
+//import ch.skyfy.homes.utils.hasPermission
 import ch.skyfy.jsonconfiglib.updateIterableNested
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
@@ -21,10 +21,10 @@ fun deleteHome(
 
     val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
 
-    if (!hasPermission(player, permission)) {
-        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-        return
-    }
+//    if (!hasPermission(player, permission)) {
+//        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+//        return
+//    }
 
     // Check for home duplication
     Configs.PLAYERS_HOMES.updateIterableNested(Player::homes, player.homes) { homes ->

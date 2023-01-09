@@ -40,11 +40,11 @@ class HomesMod : DedicatedServerModInitializer {
                     it.add(Player(uuid = handler.player.uuidAsString, handler.player.name.string, "SHORT"))
             }
 
-            Configs.PERMISSION_CONFIG.updateMap(PermissionsConfig::players) {
-                if (!it.containsKey(playerId)) {
-                    it[playerId] = PlayerPerms(mutableListOf("DEFAULT"), mutableListOf())
-                }
-            }
+//            Configs.PERMISSION_CONFIG.updateMap(PermissionsConfig::players) {
+//                if (!it.containsKey(playerId)) {
+//                    it[playerId] = PlayerPerms(mutableListOf("DEFAULT"), mutableListOf())
+//                }
+//            }
 
 //            handler.player.sendMessage(translatable("chat.test"))
         }

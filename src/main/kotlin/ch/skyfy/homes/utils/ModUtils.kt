@@ -32,43 +32,43 @@ fun getPlayerId(player: Player) = player.name + "#" + player.uuid
  *
  *
  */
-fun hasPermission(player: Player, permission: String): Boolean {
+//fun hasPermission(player: Player, permission: String): Boolean {
+//
+//    val playersMap = Configs.PERMISSION_CONFIG.serializableData.players
+//
+//    val groupsAsId = playersMap.filter { it.key == getPlayerId(player) }.values.flatMap { it.groups }.toMutableList()
+//    val groups = getGroupsOfPlayer(groupsAsId)
+//
+//    // Checking directly assigned permission (priority)
+//    playersMap.filter { it.key == getPlayerId(player) }.values.flatMap { it.permissions }.forEach {
+//
+//        if (it.id == permission) {
+//            println("found a non-group permission, value is: ${it.value}")
+//            return it.value
+//        }
+//
+//        if (it.id.contains('*') && permission.contains(it.id.substringBeforeLast('*').substringBeforeLast('.'))) {
+//            println("found a non-group permission #2, value is: ${it.value}")
+//            return it.value
+//        }
+//    }
+//
+//    groups.forEach { group -> return recurseGroup(group, permission) }
+//
+//    return false
+//}
 
-    val playersMap = Configs.PERMISSION_CONFIG.serializableData.players
+//private fun recurseGroup(group: Group, permission: String) : Boolean {
+////    val perm = group.permissions.find { it.id == permission || (it.id.contains('*') && permission.contains(it.id.substringBeforeLast('*').substringBeforeLast('.'))) }
+////    if (perm != null) return perm.value
+//
+//    return group.permissions.find { it.id == permission || (it.id.contains('*') && permission.contains(it.id.substringBeforeLast('*').substringBeforeLast('.'))) }?.value
+//        ?: if(group.parent != null) recurseGroup(getGroupsOfPlayer(mutableListOf(group.parent)).first(), permission) else false
+//
+////    return if(group.parent != null) recurseGroup(getGroupsOfPlayer(mutableListOf(group.parent)).first(), permission) else false
+//}
 
-    val groupsAsId = playersMap.filter { it.key == getPlayerId(player) }.values.flatMap { it.groups }.toMutableList()
-    val groups = getGroupsOfPlayer(groupsAsId)
-
-    // Checking directly assigned permission (priority)
-    playersMap.filter { it.key == getPlayerId(player) }.values.flatMap { it.permissions }.forEach {
-
-        if (it.id == permission) {
-            println("found a non-group permission, value is: ${it.value}")
-            return it.value
-        }
-
-        if (it.id.contains('*') && permission.contains(it.id.substringBeforeLast('*').substringBeforeLast('.'))) {
-            println("found a non-group permission #2, value is: ${it.value}")
-            return it.value
-        }
-    }
-
-    groups.forEach { group -> return recurseGroup(group, permission) }
-
-    return false
-}
-
-private fun recurseGroup(group: Group, permission: String) : Boolean {
-//    val perm = group.permissions.find { it.id == permission || (it.id.contains('*') && permission.contains(it.id.substringBeforeLast('*').substringBeforeLast('.'))) }
-//    if (perm != null) return perm.value
-
-    return group.permissions.find { it.id == permission || (it.id.contains('*') && permission.contains(it.id.substringBeforeLast('*').substringBeforeLast('.'))) }?.value
-        ?: if(group.parent != null) recurseGroup(getGroupsOfPlayer(mutableListOf(group.parent)).first(), permission) else false
-
-//    return if(group.parent != null) recurseGroup(getGroupsOfPlayer(mutableListOf(group.parent)).first(), permission) else false
-}
-
-fun getGroupsOfPlayer(groupsNameList: MutableList<String>): List<Group> = Configs.PERMISSION_CONFIG.serializableData.group.filter { groupsNameList.contains(it.id) }.sortedBy { it.weight }
+//fun getGroupsOfPlayer(groupsNameList: MutableList<String>): List<Group> = Configs.PERMISSION_CONFIG.serializableData.group.filter { groupsNameList.contains(it.id) }.sortedBy { it.weight }
 //    val list = Configs.PERMISSION_CONFIG.serializableData.group.filter { groupsNameList.contains(it.id) }
 //    list.sortedBy { it.weight }
 //    return list

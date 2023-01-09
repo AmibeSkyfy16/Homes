@@ -6,7 +6,6 @@ import ch.skyfy.homes.HomesMod
 import ch.skyfy.homes.callbacks.EntityMoveCallback
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.utils.getGroupRules
-import ch.skyfy.homes.utils.hasPermission
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -53,10 +52,10 @@ abstract class TeleportHomeImpl(override val permission: String, override val co
         val player = Configs.PLAYERS_HOMES.serializableData.players.find { spe.uuidAsString == it.uuid } ?: return
         val rule = getGroupRules(player) ?: return
 
-        if (!hasPermission(player, permission)) {
-            spe.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-            return
-        }
+//        if (!hasPermission(player, permission)) {
+//            spe.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+//            return
+//        }
 
         val home = player.homes.find { it.name == homeName }
         if (home == null) {

@@ -35,9 +35,9 @@ class DefaultGroupRulesConfig : Defaultable<RulesConfig> {
     override fun getDefault() = RulesConfig(
         mutableListOf(
             GroupRules("SHORT", Rule(3, 10, 3)),
-            GroupRules("MEDIUM", Rule(3, 15, 5)),
-            GroupRules("LONG", Rule(3, 30, 5)),
-            GroupRules("BORING", Rule(3, 60, 5)),
+            GroupRules("MEDIUM", Rule(4, 15, 5)),
+            GroupRules("LONG", Rule(5, 30, 5)),
+            GroupRules("BORING", Rule(6, 60, 5)),
             )
     )
 
