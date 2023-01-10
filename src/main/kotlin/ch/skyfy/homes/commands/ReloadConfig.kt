@@ -5,8 +5,6 @@ import ch.skyfy.homes.config.Configs
 import ch.skyfy.jsonconfiglib.ConfigManager
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
-import com.mojang.brigadier.CommandDispatcher
-import com.mojang.brigadier.builder.LiteralArgumentBuilder.literal
 import com.mojang.brigadier.context.CommandContext
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.text.Text
@@ -16,7 +14,6 @@ class ReloadConfig : Command<ServerCommandSource> {
     override fun run(context: CommandContext<ServerCommandSource>): Int {
         val list = mutableListOf<Boolean>()
         list.add(ConfigManager.reloadConfig(Configs.PLAYERS_HOMES))
-//        list.add(ConfigManager.reloadConfig(Configs.PERMISSION_CONFIG))
         if(list.contains(false)){
             context.source.sendFeedback(Text.literal("Configuration could not be reloaded"), false)
             HomesMod.LOGGER.warn("Configuration could not be reloaded")

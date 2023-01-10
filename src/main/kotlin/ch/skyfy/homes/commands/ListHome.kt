@@ -1,6 +1,7 @@
 package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.config.Configs
+import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -11,35 +12,30 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
 fun listHome(
-    playerEntity: PlayerEntity,
-    permission: String
-) {
+    playerEntity: PlayerEntity
+) : Int {
 
-    val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return
-
-//    if (!hasPermission(player, permission)) {
-//        playerEntity.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-//        return
-//    }
+    val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return 0
 
     player.homes.forEach {
         playerEntity.sendMessage(Text.literal("- ${it.name}").setStyle(Style.EMPTY.withColor(Formatting.DARK_PURPLE)))
     }
+
+    return 0
 }
 
-class ListHome(override val permission: String) : Permission(permission) {
+class ListHome : Command<ServerCommandSource> {
     override fun run(context: CommandContext<ServerCommandSource>): Int {
-        listHome(context.source?.player ?: return SINGLE_SUCCESS, permission)
-        return 0
+        return listHome(context.source?.player ?: return SINGLE_SUCCESS)
     }
 
 }
 
-class ListHomeForAnotherPlayer(override val permission: String) : Permission(permission) {
+class ListHomeForAnotherPlayer: Command<ServerCommandSource> {
     override fun run(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
-        if (targetPlayer != null) listHome(targetPlayer, permission)
+        if (targetPlayer != null) listHome(targetPlayer)
         else context.source?.sendFeedback(Text.literal("Player not found"), false)
         return 0
     }

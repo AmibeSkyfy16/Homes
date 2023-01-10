@@ -6,11 +6,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PlayersHomesConfig(var players: MutableSet<Player>) : Validatable {
-
     override fun validateImpl(errors: MutableList<String>) {
         players.forEach { it.validateImpl(errors) }
     }
-
 }
 
 @Serializable

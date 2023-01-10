@@ -6,6 +6,7 @@ import ch.skyfy.homes.HomesMod
 import ch.skyfy.homes.callbacks.EntityMoveCallback
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.utils.getGroupRules
+import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -23,7 +24,7 @@ import net.minecraft.util.math.Vec3d
 import java.lang.System.currentTimeMillis
 import kotlin.coroutines.CoroutineContext
 
-abstract class TeleportHomeImpl(override val permission: String, override val coroutineContext: CoroutineContext = Dispatchers.Default) : ch.skyfy.homes.commands.Permission(permission), CoroutineScope {
+abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext = Dispatchers.Default) : Command<ServerCommandSource>, CoroutineScope {
 
     private val teleporting: MutableMap<String, Pair<CoroutineScope, Vec3d>> = mutableMapOf()
 
@@ -47,15 +48,10 @@ abstract class TeleportHomeImpl(override val permission: String, override val co
         return ActionResult.PASS
     }
 
-    fun teleportHome(spe: ServerPlayerEntity, permission: String, homeName: String) {
+    fun teleportHome(spe: ServerPlayerEntity, homeName: String) {
 
         val player = Configs.PLAYERS_HOMES.serializableData.players.find { spe.uuidAsString == it.uuid } ?: return
         val rule = getGroupRules(player) ?: return
-
-//        if (!hasPermission(player, permission)) {
-//            spe.sendMessage(Text.literal("You don't have the permission to use this command").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-//            return
-//        }
 
         val home = player.homes.find { it.name == homeName }
         if (home == null) {
@@ -105,19 +101,19 @@ abstract class TeleportHomeImpl(override val permission: String, override val co
 
 }
 
-class TeleportHome(override val permission: String) : TeleportHomeImpl(permission) {
+class TeleportHome : TeleportHomeImpl() {
     override fun run(context: CommandContext<ServerCommandSource>): Int {
-        teleportHome(context.source?.player ?: return SINGLE_SUCCESS, permission, getString(context, "homeName"))
+        teleportHome(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"))
         return 0
     }
 
 }
 
-class TeleportHomeToAnotherPlayer(override val permission: String) : TeleportHomeImpl(permission) {
+class TeleportHomeToAnotherPlayer : TeleportHomeImpl() {
     override fun run(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
-        if (targetPlayer != null) teleportHome(targetPlayer, permission, getString(context, "homeName"))
+        if (targetPlayer != null) teleportHome(targetPlayer, getString(context, "homeName"))
         else context.source?.sendFeedback(Text.literal("Player not found"), false)
         return 0
     }

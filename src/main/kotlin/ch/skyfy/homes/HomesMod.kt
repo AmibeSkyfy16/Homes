@@ -5,7 +5,6 @@ import ch.skyfy.homes.config.*
 import ch.skyfy.homes.utils.setupConfigDirectory
 import ch.skyfy.jsonconfiglib.ConfigManager
 import ch.skyfy.jsonconfiglib.updateIterable
-import ch.skyfy.jsonconfiglib.updateMap
 import net.fabricmc.api.DedicatedServerModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
@@ -32,21 +31,10 @@ class HomesMod : DedicatedServerModInitializer {
         registerCommands()
 
         ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
-
-            val playerId = handler.player.name.string + "#" + handler.player.uuidAsString
-
             Configs.PLAYERS_HOMES.updateIterable(PlayersHomesConfig::players) {
                 if (it.none { player -> player.uuid == handler.player.uuidAsString })
                     it.add(Player(uuid = handler.player.uuidAsString, handler.player.name.string, "SHORT"))
             }
-
-//            Configs.PERMISSION_CONFIG.updateMap(PermissionsConfig::players) {
-//                if (!it.containsKey(playerId)) {
-//                    it[playerId] = PlayerPerms(mutableListOf("DEFAULT"), mutableListOf())
-//                }
-//            }
-
-//            handler.player.sendMessage(translatable("chat.test"))
         }
     }
 
