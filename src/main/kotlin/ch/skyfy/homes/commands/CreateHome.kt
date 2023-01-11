@@ -48,14 +48,14 @@ fun addHomeToPlayer(
     return 0
 }
 
-class CreateHome : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class CreateHome : AbstractCommand() {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         return addHomeToPlayer(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"))
     }
 }
 
-class CreateHomeWithCoordinates : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class CreateHomeWithCoordinates : AbstractCommand()  {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         return addHomeToPlayer(
             playerEntity = context.source?.player ?: return SINGLE_SUCCESS,
             homeName = getString(context, "homeName"),
@@ -68,8 +68,8 @@ class CreateHomeWithCoordinates : Command<ServerCommandSource> {
     }
 }
 
-class CreateHomeForAnotherPlayer : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class CreateHomeForAnotherPlayer : AbstractCommand() {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null) addHomeToPlayer(targetPlayer, getString(context, "homeName"))
@@ -78,8 +78,8 @@ class CreateHomeForAnotherPlayer : Command<ServerCommandSource> {
     }
 }
 
-class CreateHomeForAnotherPlayerWithCoordinates : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class CreateHomeForAnotherPlayerWithCoordinates : AbstractCommand()  {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null)

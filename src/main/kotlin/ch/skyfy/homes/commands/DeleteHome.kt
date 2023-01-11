@@ -27,14 +27,14 @@ fun deleteHome(
     return 0
 }
 
-class DeleteHome : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class DeleteHome : AbstractCommand()  {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         return deleteHome(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"))
     }
 }
 
-class DeleteHomeForAnotherPlayer : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class DeleteHomeForAnotherPlayer : AbstractCommand()  {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null) deleteHome(targetPlayer, getString(context, "homeName"))

@@ -6,7 +6,6 @@ import ch.skyfy.homes.HomesMod
 import ch.skyfy.homes.callbacks.EntityMoveCallback
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.utils.getGroupRules
-import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -24,7 +23,7 @@ import net.minecraft.util.math.Vec3d
 import java.lang.System.currentTimeMillis
 import kotlin.coroutines.CoroutineContext
 
-abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext = Dispatchers.Default) : Command<ServerCommandSource>, CoroutineScope {
+abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext = Dispatchers.Default) : AbstractCommand(), CoroutineScope {
 
     private val teleporting: MutableMap<String, Pair<CoroutineScope, Vec3d>> = mutableMapOf()
 
@@ -102,7 +101,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
 }
 
 class TeleportHome : TeleportHomeImpl() {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         teleportHome(context.source?.player ?: return SINGLE_SUCCESS, getString(context, "homeName"))
         return 0
     }
@@ -110,7 +109,7 @@ class TeleportHome : TeleportHomeImpl() {
 }
 
 class TeleportHomeToAnotherPlayer : TeleportHomeImpl() {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null) teleportHome(targetPlayer, getString(context, "homeName"))

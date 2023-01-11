@@ -24,15 +24,15 @@ fun listHome(
     return 0
 }
 
-class ListHome : Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class ListHome : AbstractCommand()  {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         return listHome(context.source?.player ?: return SINGLE_SUCCESS)
     }
 
 }
 
-class ListHomeForAnotherPlayer: Command<ServerCommandSource> {
-    override fun run(context: CommandContext<ServerCommandSource>): Int {
+class ListHomeForAnotherPlayer: AbstractCommand()  {
+    override fun runImpl(context: CommandContext<ServerCommandSource>): Int {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null) listHome(targetPlayer)
