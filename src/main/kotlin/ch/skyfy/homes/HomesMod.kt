@@ -1,7 +1,9 @@
 package ch.skyfy.homes
 
+import ch.skyfy.homes.api.Feature
 import ch.skyfy.homes.commands.HomesCmd
 import ch.skyfy.homes.config.*
+import ch.skyfy.homes.features.ExperienceFeature
 import ch.skyfy.homes.utils.setupConfigDirectory
 import ch.skyfy.jsonconfiglib.ConfigManager
 import ch.skyfy.jsonconfiglib.updateIterable
@@ -29,6 +31,8 @@ class HomesMod : DedicatedServerModInitializer {
 
     override fun onInitializeServer() {
         registerCommands()
+
+        Feature.registerFeature("Experience", ExperienceFeature::class)
 
         ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
             Configs.PLAYERS_HOMES.updateIterable(PlayersHomesConfig::players) {

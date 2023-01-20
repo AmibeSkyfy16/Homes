@@ -20,7 +20,7 @@ data class Rule(
     val maxHomes: Int = 3,
     val cooldown: Int = 15,
     val standStill: Int = 5,
-    val conditionalFeature: String
+    val featureName: String
 ) : Validatable {
     override fun validateImpl(errors: MutableList<String>) {
         if (maxHomes < 0) errors.add("maxHome cannot have a negative value")
@@ -35,10 +35,10 @@ data class Rule(
 class DefaultGroupRulesConfig : Defaultable<RulesConfig> {
     override fun getDefault() = RulesConfig(
         mutableListOf(
-            GroupRules("SHORT", Rule(3, 10, 3, "ch.skyfy.homes.feature.ExperienceFeature")),
-            GroupRules("MEDIUM", Rule(4, 15, 5, "ch.skyfy.homes.feature.ExperienceFeature")),
-            GroupRules("LONG", Rule(5, 30, 5, "ch.skyfy.homes.feature.ExperienceFeature")),
-            GroupRules("BORING", Rule(6, 60, 5, "ch.skyfy.homes.feature.ExperienceFeature")),
+            GroupRules("SHORT", Rule(3, 10, 3, "Experience")),
+            GroupRules("MEDIUM", Rule(4, 15, 5, "Experience")),
+            GroupRules("LONG", Rule(5, 30, 5, "Experience")),
+            GroupRules("BORING", Rule(6, 60, 5, "Experience")),
             )
     )
 

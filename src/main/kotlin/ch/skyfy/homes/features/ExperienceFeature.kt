@@ -2,6 +2,7 @@
 
 package ch.skyfy.homes.features
 
+import ch.skyfy.homes.api.Feature
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.jsonconfiglib.Defaultable
 import ch.skyfy.jsonconfiglib.Validatable
@@ -19,7 +20,7 @@ import kotlin.math.min
  * When player use teleport command, it will cost some XP, more the distance is high between player position and his home,
  * more the experience cost will be high
  */
-object ExperienceFeature : ConditionalFeature() {
+object ExperienceFeature : Feature() {
 
 
     override fun teleportHomeImpl(context: CommandContext<ServerCommandSource>): Boolean {
@@ -41,7 +42,7 @@ object ExperienceFeature : ConditionalFeature() {
         ).max()
 
         val costs = Configs.EXPERIENCE_FEATURE_CONFIG.serializableData.experienceCosts
-        val cost = costs.map<Pair<Pair<Int, Int>, Pair<Int, Int>>, Int?> {
+        val cost = costs.map {
             val min = it.first.first
             val max = it.second.first
             if (greaterDistance in min until max) {
