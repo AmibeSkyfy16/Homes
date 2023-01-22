@@ -1,11 +1,13 @@
 package ch.skyfy.homes.config
 
-import ch.skyfy.jsonconfiglib.Defaultable
-import ch.skyfy.jsonconfiglib.Validatable
+import ch.skyfy.json5configlib.Defaultable
+import ch.skyfy.json5configlib.Validatable
+import io.github.xn32.json5k.SerialComment
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class RulesConfig(
+    @SerialComment("A list of group rule. you can configure the home limit, the cooldown, etc.")
     val groupsRules: MutableList<GroupRules>
 ) : Validatable
 
@@ -20,7 +22,7 @@ data class Rule(
     val maxHomes: Int = 3,
     val cooldown: Int = 15,
     val standStill: Int = 5,
-    val featureName: String
+    val extensionName: String
 ) : Validatable {
     override fun validateImpl(errors: MutableList<String>) {
         if (maxHomes < 0) errors.add("maxHome cannot have a negative value")
@@ -35,10 +37,10 @@ data class Rule(
 class DefaultGroupRulesConfig : Defaultable<RulesConfig> {
     override fun getDefault() = RulesConfig(
         mutableListOf(
-            GroupRules("SHORT", Rule(3, 10, 3, "Experience")),
-            GroupRules("MEDIUM", Rule(4, 15, 5, "Experience")),
-            GroupRules("LONG", Rule(5, 30, 5, "Experience")),
-            GroupRules("BORING", Rule(6, 60, 5, "Experience")),
+            GroupRules("SHORT", Rule(3, 10, 3, "NONE")),
+            GroupRules("MEDIUM", Rule(4, 15, 5, "NONE")),
+            GroupRules("LONG", Rule(5, 30, 5, "NONE")),
+            GroupRules("BORING", Rule(6, 60, 5, "NONE")),
             )
     )
 

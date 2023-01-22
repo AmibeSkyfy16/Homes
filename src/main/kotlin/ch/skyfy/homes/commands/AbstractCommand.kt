@@ -1,6 +1,6 @@
 package ch.skyfy.homes.commands
 
-import ch.skyfy.homes.api.Feature
+import ch.skyfy.homes.api.Extension
 import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.utils.getGroupRules
 import com.mojang.brigadier.Command
@@ -14,7 +14,10 @@ abstract class AbstractCommand : Command<ServerCommandSource> {
         val rule = getGroupRules(player) ?: return 0
 
         when(this){
-            is TeleportHome -> Feature.getFeature(rule.featureName)?.teleportHomeImpl(context)
+            is CreateHome -> Extension.getExtension(rule.extensionName)?.createHome(context)
+            is DeleteHome -> Extension.getExtension(rule.extensionName)?.deleteHome(context)
+            is ListHome -> Extension.getExtension(rule.extensionName)?.listHome(context)
+            is TeleportHome -> Extension.getExtension(rule.extensionName)?.teleportHome(context)
         }
 
         return runImpl(context)

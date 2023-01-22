@@ -1,11 +1,15 @@
 package ch.skyfy.homes.config
 
-import ch.skyfy.jsonconfiglib.Defaultable
-import ch.skyfy.jsonconfiglib.Validatable
+import ch.skyfy.json5configlib.Defaultable
+import ch.skyfy.json5configlib.Validatable
 import kotlinx.serialization.Serializable
+import io.github.xn32.json5k.SerialComment
 
 @Serializable
-data class PlayersHomesConfig(var players: MutableSet<Player>) : Validatable {
+data class PlayersHomesConfig(
+    @SerialComment("Will contain the list of players, with their name, the name of the group they are associated with and the list of their homes")
+    var players: MutableSet<Player>
+) : Validatable {
     override fun validateImpl(errors: MutableList<String>) {
         players.forEach { it.validateImpl(errors) }
     }

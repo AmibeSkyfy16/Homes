@@ -4,7 +4,7 @@ import ch.skyfy.homes.config.Configs
 import ch.skyfy.homes.config.Home
 import ch.skyfy.homes.config.Player
 import ch.skyfy.homes.utils.getGroupRules
-import ch.skyfy.jsonconfiglib.updateIterableNested
+import ch.skyfy.json5configlib.updateIterableNested
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.DoubleArgumentType.getDouble

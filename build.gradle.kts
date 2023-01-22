@@ -23,6 +23,9 @@ allprojects {
     repositories {
         mavenCentral()
         maven("https://repo.repsy.io/mvn/amibeskyfy16/repo") // Use for my JsonConfig lib
+        flatDir {
+            dirs("libs")
+        }
     }
 
     dependencies {
@@ -33,7 +36,8 @@ allprojects {
         modImplementation("net.fabricmc.fabric-api:fabric-api:${properties["fabric_version"]}")
         modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
 
-        transitiveInclude(implementation("ch.skyfy.jsonconfiglib:json-config-lib:3.0.12")!!)
+//        api("ch.skyfy.json5configlib:json5-config-lib:1.0.2")
+        transitiveInclude(implementation("ch.skyfy.json5configlib:json5-config-lib:1.0.21")!!)
 
         handleIncludes(project, transitiveInclude)
 

@@ -1,11 +1,11 @@
 @file:Suppress("unused")
 
-package ch.skyfy.homes.features
+package ch.skyfy.homes.extension
 
-import ch.skyfy.homes.api.Feature
+import ch.skyfy.homes.api.Extension
 import ch.skyfy.homes.config.Configs
-import ch.skyfy.jsonconfiglib.Defaultable
-import ch.skyfy.jsonconfiglib.Validatable
+import ch.skyfy.json5configlib.Defaultable
+import ch.skyfy.json5configlib.Validatable
 import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.context.CommandContext
 import kotlinx.serialization.Serializable
@@ -20,10 +20,9 @@ import kotlin.math.min
  * When player use teleport command, it will cost some XP, more the distance is high between player position and his home,
  * more the experience cost will be high
  */
-object ExperienceFeature : Feature() {
+object ExperienceExtension : Extension() {
 
-
-    override fun teleportHomeImpl(context: CommandContext<ServerCommandSource>): Boolean {
+    override fun teleportHome(context: CommandContext<ServerCommandSource>): Boolean {
         val spe = context.source.player ?: return true
         val player = Configs.PLAYERS_HOMES.serializableData.players.find { spe.uuidAsString == it.uuid } ?: return true
 

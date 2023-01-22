@@ -1,12 +1,12 @@
 package ch.skyfy.homes
 
-import ch.skyfy.homes.api.Feature
+import ch.skyfy.homes.api.Extension
 import ch.skyfy.homes.commands.HomesCmd
 import ch.skyfy.homes.config.*
-import ch.skyfy.homes.features.ExperienceFeature
+import ch.skyfy.homes.extension.ExperienceExtension
 import ch.skyfy.homes.utils.setupConfigDirectory
-import ch.skyfy.jsonconfiglib.ConfigManager
-import ch.skyfy.jsonconfiglib.updateIterable
+import ch.skyfy.json5configlib.ConfigManager
+import ch.skyfy.json5configlib.updateIterable
 import net.fabricmc.api.DedicatedServerModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
@@ -32,7 +32,7 @@ class HomesMod : DedicatedServerModInitializer {
     override fun onInitializeServer() {
         registerCommands()
 
-        Feature.registerFeature("Experience", ExperienceFeature::class)
+        Extension.registerExtension("Experience", ExperienceExtension::class)
 
         ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
             Configs.PLAYERS_HOMES.updateIterable(PlayersHomesConfig::players) {
