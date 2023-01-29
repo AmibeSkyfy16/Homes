@@ -4,138 +4,159 @@
     <g id="dark" transform="matrix(1.39088,0,0,5.51443,-2.63022,6.22269)">
         <rect x="1.891" y="-1.128" width="575.177" height="816.041" style="fill:rgb(13,17,23);"/>
     </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1318.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; create &lt;home name&gt;</text>
-        <g transform="matrix(14,0,0,14,693.062,210.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,693.062,210.203)">
-        </g>
-        <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Create a home for the player that has been specif<tspan x="701.678px " y="210.203px ">e</tspan>d in the</text>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1428.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; create &lt;home name&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; &lt;yaw&gt; &lt;pitch&gt;</text>
-        <g transform="matrix(14,0,0,14,693.062,210.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,693.062,210.203)">
-        </g>
-        <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Create a home for the player that has been specif<tspan x="701.678px " y="210.203px ">e</tspan>d in the</text>
-        <g transform="matrix(14,0,0,14,434.601,226.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,434.601,226.203)">
-        </g>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command with specif<tspan x="443.216px " y="226.203px ">c</tspan> coordinates</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1538.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; delete &lt;home name&gt;</text>
-        <g transform="matrix(14,0,0,14,693.062,210.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,693.062,210.203)">
-        </g>
-        <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Delete a home for the player that has been specif<tspan x="701.678px " y="210.203px ">e</tspan>d in the</text>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1648.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; teleport &lt;home name&gt;</text>
-        <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Teleport the player who typed the command to the home of the</text>
-        <g transform="matrix(14,0,0,14,382.908,226.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,382.908,226.203)">
-        </g>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">player specif<tspan x="391.524px " y="226.203px ">e</tspan>d in the command</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1758.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; list &lt;home name&gt;</text>
-        <g transform="matrix(14,0,0,14,744.754,210.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,744.754,210.203)">
-        </g>
-        <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Print a list of all created homes for the player specif<tspan x="753.37px " y="210.203px ">e</tspan>d in</text>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">the command</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,816.818)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes list</text>
-        <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Print a list of all created homes for the player who typed the</text>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 0</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,926.793)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes teleport &lt;home name&gt;</text>
-        <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Teleport the player who typed the command to his home</text>
-        <g transform="matrix(14,0,0,14,324.139,242.203)">
-        </g>
-        <text x="160.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="242.203px ">p</tspan>ermission level: 0</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1020.78)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes delete &lt;home name&gt;</text>
-        <g transform="matrix(14,0,0,14,384.447,210.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,384.447,210.203)">
-        </g>
-        <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Delete specif<tspan x="393.062px " y="210.203px ">e</tspan>d home for the player who typed the command</text>
-        <g transform="matrix(14,0,0,14,324.139,242.203)">
-        </g>
-        <text x="160.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="242.203px ">p</tspan>ermission level: 0</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1114.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes create &lt;home name&gt;</text>
-        <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Create a home for the player who typed the command</text>
-        <g transform="matrix(14,0,0,14,324.139,242.203)">
-        </g>
-        <text x="160.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="242.203px ">p</tspan>ermission level: 0</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-54.4468,1208.79)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes create &lt;home name&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; &lt;yaw&gt; &lt;pitch&gt;</text>
-        <g transform="matrix(14,0,0,14,806.601,210.203)">
-            <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
-        </g>
-        <g transform="matrix(14,0,0,14,806.601,210.203)">
-        </g>
-        <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Create a home for the player who typed the command with specif<tspan x="815.216px " y="210.203px ">c</tspan></text>
-        <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">coordinates</text>
-        <g transform="matrix(14,0,0,14,324.139,258.203)">
-        </g>
-        <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
-    </g>
-    <g transform="matrix(1,0,0,1,-5,1822.32)">
+    <g transform="matrix(1,0,0,1,-40,2144.11)">
         <text x="40px" y="329.892px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(4,216,4);">Works server side without having the mod on the client</text>
         <g transform="matrix(14,0,0,14,220.923,355.892)">
         </g>
         <text x="40px" y="355.892px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(4,216,4);">Works in singleplayer</text>
     </g>
-    <g transform="matrix(1,0,0,1,-89.4468,718.657)">
-        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">For now, commands are raw and dont have aliases.</text>
-        <text x="124.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Also there are command that require permission level 4 (mean it’s for OP player).</text>
-        <text x="124.447px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Command that require permission level 0 is for anyone</text>
+    <g transform="matrix(1,0,0,1,-54.4468,1989.55)">
+        <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Extension allow you to expand the features of this mod.</text>
+        <text x="124.447px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Devs can code their own extension. For more details, clone the github repo and</text>
+        <text x="124.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">take a loot at the API</text>
+        <text x="124.447px" y="274.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Available extensions</text>
+        <text x="160.447px" y="306.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="306.203px ">E</tspan>xperience</text>
+        <text x="196.447px" y="322.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="196.447px " y="322.203px ">p</tspan>layer will have to spend some experience level everytime they use the</text>
+        <text x="196.447px" y="338.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="196.447px " y="338.203px ">t</tspan>eleport command. The higher the teleportation distance, the more</text>
+        <text x="196.447px" y="354.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="196.447px " y="354.203px ">e</tspan>xpensive the XP cost will be.</text>
+        <text x="160.447px" y="386.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="386.203px ">T</tspan>he Money</text>
+        <text x="196.447px" y="402.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="196.447px " y="402.203px ">W</tspan>orks with a economy mod, player will have to spend money when</text>
+        <text x="196.447px" y="418.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="196.447px " y="418.203px ">c</tspan>reating / teleporting to their homes.</text>
+        <text x="532.447px" y="418.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(255,0,0);">NOT IMPLEMENTED YET</text>
     </g>
-    <g transform="matrix(1,0,0,1,-53.917,663.297)">
-        <g transform="matrix(30,0,0,30,236.609,203.562)">
+    <g transform="matrix(1,0,0,1,-48.917,1924.18)">
+        <g transform="matrix(30,0,0,30,273.532,203.562)">
         </g>
-        <text x="88.917px" y="203.562px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:30px;fill:rgb(228,228,228);">Commands</text>
+        <text x="88.917px" y="203.562px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:30px;fill:rgb(228,228,228);">Extensions</text>
+    </g>
+    <g id="commands" transform="matrix(1,0,0,1,0,48)">
+        <g transform="matrix(1,0,0,1,-54.4468,1318.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; create &lt;home name&gt;</text>
+            <g transform="matrix(14,0,0,14,693.062,210.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,693.062,210.203)">
+            </g>
+            <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Create a home for the player that has been specif<tspan x="701.678px " y="210.203px ">e</tspan>d in the</text>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1428.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; create &lt;home name&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; &lt;yaw&gt; &lt;pitch&gt;</text>
+            <g transform="matrix(14,0,0,14,693.062,210.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,693.062,210.203)">
+            </g>
+            <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Create a home for the player that has been specif<tspan x="701.678px " y="210.203px ">e</tspan>d in the</text>
+            <g transform="matrix(14,0,0,14,434.601,226.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,434.601,226.203)">
+            </g>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command with specif<tspan x="443.216px " y="226.203px ">c</tspan> coordinates</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1538.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; delete &lt;home name&gt;</text>
+            <g transform="matrix(14,0,0,14,693.062,210.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,693.062,210.203)">
+            </g>
+            <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Delete a home for the player that has been specif<tspan x="701.678px " y="210.203px ">e</tspan>d in the</text>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1648.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; teleport &lt;home name&gt;</text>
+            <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Teleport the player who typed the command to the home of the</text>
+            <g transform="matrix(14,0,0,14,382.908,226.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,382.908,226.203)">
+            </g>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">player specif<tspan x="391.524px " y="226.203px ">e</tspan>d in the command</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1758.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes player &lt;player name&gt; list &lt;home name&gt;</text>
+            <g transform="matrix(14,0,0,14,744.754,210.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,744.754,210.203)">
+            </g>
+            <text x="158.908px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">description: Print a list of all created homes for the player specif<tspan x="753.37px " y="210.203px ">e</tspan>d in</text>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">the command</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,816.818)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes list</text>
+            <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Print a list of all created homes for the player who typed the</text>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">command</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 0</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,926.793)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes teleport &lt;home name&gt;</text>
+            <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Teleport the player who typed the command to his home</text>
+            <g transform="matrix(14,0,0,14,324.139,242.203)">
+            </g>
+            <text x="160.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="242.203px ">p</tspan>ermission level: 0</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1020.78)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes delete &lt;home name&gt;</text>
+            <g transform="matrix(14,0,0,14,384.447,210.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,384.447,210.203)">
+            </g>
+            <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Delete specif<tspan x="393.062px " y="210.203px ">e</tspan>d home for the player who typed the command</text>
+            <g transform="matrix(14,0,0,14,324.139,242.203)">
+            </g>
+            <text x="160.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="242.203px ">p</tspan>ermission level: 0</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1114.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes create &lt;home name&gt;</text>
+            <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Create a home for the player who typed the command</text>
+            <g transform="matrix(14,0,0,14,324.139,242.203)">
+            </g>
+            <text x="160.447px" y="242.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="242.203px ">p</tspan>ermission level: 0</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-54.4468,1208.79)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">/homes create &lt;home name&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; &lt;yaw&gt; &lt;pitch&gt;</text>
+            <g transform="matrix(14,0,0,14,806.601,210.203)">
+                <path d="M0.307,-0.774C0.33,-0.774 0.348,-0.767 0.362,-0.753C0.376,-0.739 0.383,-0.722 0.383,-0.702C0.383,-0.681 0.376,-0.664 0.362,-0.65C0.348,-0.636 0.33,-0.629 0.307,-0.629C0.285,-0.629 0.267,-0.636 0.253,-0.65C0.239,-0.664 0.232,-0.681 0.232,-0.702C0.232,-0.722 0.239,-0.739 0.253,-0.753C0.267,-0.767 0.285,-0.774 0.307,-0.774ZM0.387,-0.503L0.387,-0.084L0.534,-0.084L0.534,-0L0.11,-0L0.11,-0.084L0.272,-0.084L0.272,-0.418L0.115,-0.418L0.115,-0.503L0.387,-0.503Z" style="fill:rgb(228,228,228);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(14,0,0,14,806.601,210.203)">
+            </g>
+            <text x="160.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="210.203px ">d</tspan>escription: Create a home for the player who typed the command with specif<tspan x="815.216px " y="210.203px ">c</tspan></text>
+            <text x="270.908px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">coordinates</text>
+            <g transform="matrix(14,0,0,14,324.139,258.203)">
+            </g>
+            <text x="160.447px" y="258.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="258.203px ">p</tspan>ermission level: 4</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-89.4468,718.657)">
+            <text x="124.447px" y="194.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">For now, commands are raw and dont have aliases.</text>
+            <text x="124.447px" y="210.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Also there are command that require permission level 4 (mean it’s for OP player).</text>
+            <text x="124.447px" y="226.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">Command that require permission level 0 is for anyone</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-53.917,663.297)">
+            <g transform="matrix(30,0,0,30,236.609,203.562)">
+            </g>
+            <text x="88.917px" y="203.562px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:30px;fill:rgb(228,228,228);">Commands</text>
+        </g>
     </g>
     <g id="Configurations" transform="matrix(1,0,0,1,1.74083e-13,-68.8)">
         <g transform="matrix(1,0,0,1,-54.4468,502.677)">
@@ -163,9 +184,10 @@
             <text x="160.447px" y="290.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="290.203px ">s</tspan>tandstill: the time a player have to wait without moving before he can get</text>
             <text x="263.831px" y="306.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);">teleported to his home</text>
             <text x="160.447px" y="338.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="338.203px ">c</tspan>ooldown: the time between two usage of /homes teleport &lt;home name&gt; command</text>
-            <g transform="matrix(14,0,0,14,393.062,370.203)">
-            </g>
             <text x="160.447px" y="370.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="370.203px ">m</tspan>axHomes: the maximum homes</text>
+            <g transform="matrix(14,0,0,14,772.139,402.203)">
+            </g>
+            <text x="160.447px" y="402.203px" style="font-family:'FiraCode-Medium', 'Fira Code';font-weight:500;font-size:14px;fill:rgb(228,228,228);"><tspan x="160.447px " y="402.203px ">e</tspan>xtensionName: The name of the extension to use. See below « Extension »</text>
         </g>
         <g transform="matrix(1,0,0,1,-84.4468,466.657)">
             <g transform="matrix(14,0,0,14,167.524,194.203)">

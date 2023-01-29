@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("maven-publish")
-    id("fabric-loom") version "1.0-SNAPSHOT"
+    id("fabric-loom") version "1.1-SNAPSHOT"
     id("org.jetbrains.kotlin.jvm") version "1.8.0"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"
     idea
@@ -23,9 +23,6 @@ allprojects {
     repositories {
         mavenCentral()
         maven("https://repo.repsy.io/mvn/amibeskyfy16/repo") // Use for my JsonConfig lib
-        flatDir {
-            dirs("libs")
-        }
     }
 
     dependencies {
@@ -36,7 +33,6 @@ allprojects {
         modImplementation("net.fabricmc.fabric-api:fabric-api:${properties["fabric_version"]}")
         modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
 
-//        api("ch.skyfy.json5configlib:json5-config-lib:1.0.2")
         transitiveInclude(implementation("ch.skyfy.json5configlib:json5-config-lib:1.0.21")!!)
 
         handleIncludes(project, transitiveInclude)

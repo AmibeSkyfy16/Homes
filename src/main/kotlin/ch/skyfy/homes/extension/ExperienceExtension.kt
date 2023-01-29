@@ -66,12 +66,12 @@ object ExperienceExtension : Extension() {
 }
 
 @Serializable
-data class ExperienceFeatureConfig(
+data class ExperienceExtensionConfig(
     val experienceCosts: List<Pair<Pair<Int, Int>, Pair<Int, Int>>>
 ) : Validatable
 
-class DefaultExperienceFeatureConfig : Defaultable<ExperienceFeatureConfig> {
-    override fun getDefault(): ExperienceFeatureConfig = ExperienceFeatureConfig(
+class DefaultExperienceExtensionConfig : Defaultable<ExperienceExtensionConfig> {
+    override fun getDefault(): ExperienceExtensionConfig = ExperienceExtensionConfig(
         listOf(
             Pair(
                 Pair(0, 0),
