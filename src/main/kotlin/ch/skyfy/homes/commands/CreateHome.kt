@@ -1,11 +1,10 @@
 package ch.skyfy.homes.commands
 
-import ch.skyfy.homes.config.Configs
-import ch.skyfy.homes.config.Home
-import ch.skyfy.homes.config.Player
-import ch.skyfy.homes.utils.getGroupRules
+import ch.skyfy.homes.api.config.Configs
+import ch.skyfy.homes.api.config.Home
+import ch.skyfy.homes.api.config.Player
+import ch.skyfy.homes.api.utils.getRule
 import ch.skyfy.json5configlib.updateIterableNested
-import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.DoubleArgumentType.getDouble
 import com.mojang.brigadier.arguments.FloatArgumentType.getFloat
@@ -28,7 +27,7 @@ fun addHomeToPlayer(
 ) : Int {
 
     val player = Configs.PLAYERS_HOMES.serializableData.players.find { playerEntity.uuidAsString == it.uuid } ?: return 0
-    val rule = getGroupRules(player) ?: return 0
+    val rule = getRule(player) ?: return 0
 
     // Check for home duplication
     player.homes.find { homeName == it.name }?.let {

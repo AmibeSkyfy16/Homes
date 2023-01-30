@@ -3,27 +3,27 @@
   "id": "homes",
   "version": "${version}",
   "name": "Homes",
-  "description": "This mod allow player to have homes, they can create them with /createHome <name>",
+  "description": "This mod allow player to have homes, they can create them with /homes create <name>",
   "authors": ["Skyfy16"],
   "contact": {},
   "license": "MIT",
   "icon": "assets/homes/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
-    "server": [
+    "main": [
       {
         "adapter": "kotlin",
         "value": "ch.skyfy.homes.HomesMod"
       }
-    ],
-    "main": []
+    ]
   },
   "mixins": ["homes.mixin.json"],
   "depends": {
-    "fabricloader": ">=0.14.12",
+    "java": ">=17",
     "fabric": "*",
+    "fabricloader": ">=0.14.13",
     "minecraft": "1.19.3",
     "fabric-language-kotlin": ">=1.9.0+kotlin.1.8.0",
-    "java": ">=17"
+    "homes_api": ">=1.0.6+1.19.3"
   }
 }

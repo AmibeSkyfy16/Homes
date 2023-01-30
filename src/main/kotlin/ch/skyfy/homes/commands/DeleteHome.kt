@@ -1,9 +1,8 @@
 package ch.skyfy.homes.commands
 
-import ch.skyfy.homes.config.Configs
-import ch.skyfy.homes.config.Player
+import ch.skyfy.homes.api.config.Configs
+import ch.skyfy.homes.api.config.Player
 import ch.skyfy.json5configlib.updateIterableNested
-import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext

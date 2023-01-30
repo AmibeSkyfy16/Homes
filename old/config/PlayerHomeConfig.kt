@@ -1,5 +1,8 @@
 package ch.skyfy.homes.config
 
+import ch.skyfy.homes.api.config.Home
+import ch.skyfy.homes.api.config.Player
+import ch.skyfy.homes.api.config.PlayersHomesConfig
 import ch.skyfy.json5configlib.Defaultable
 import ch.skyfy.json5configlib.Validatable
 import kotlinx.serialization.Serializable

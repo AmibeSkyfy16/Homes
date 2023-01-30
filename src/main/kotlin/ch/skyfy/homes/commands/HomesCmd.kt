@@ -1,7 +1,7 @@
 package ch.skyfy.homes.commands
 
-import ch.skyfy.homes.config.Configs
-import ch.skyfy.homes.config.Player
+import ch.skyfy.homes.api.config.Configs
+import ch.skyfy.homes.api.config.Player
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.DoubleArgumentType
 import com.mojang.brigadier.arguments.FloatArgumentType

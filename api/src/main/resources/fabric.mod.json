@@ -7,7 +7,15 @@
   "authors": ["Skyfy16"],
   "contact": {},
   "license": "MIT",
-  "environment": "server",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "ch.skyfy.homes.api.HomesAPIMod"
+      }
+    ]
+  },
   "mixins": [],
   "depends": {
     "fabricloader": ">=0.14.13",

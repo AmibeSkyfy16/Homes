@@ -1,7 +1,7 @@
 package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.HomesMod
-import ch.skyfy.homes.config.Configs
+import ch.skyfy.homes.api.config.Configs
 import ch.skyfy.json5configlib.ConfigManager
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.Command.SINGLE_SUCCESS

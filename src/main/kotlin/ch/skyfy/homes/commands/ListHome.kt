@@ -1,7 +1,6 @@
 package ch.skyfy.homes.commands
 
-import ch.skyfy.homes.config.Configs
-import com.mojang.brigadier.Command
+import ch.skyfy.homes.api.config.Configs
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext

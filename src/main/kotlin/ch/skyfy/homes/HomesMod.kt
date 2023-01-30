@@ -1,13 +1,15 @@
 package ch.skyfy.homes
 
 import ch.skyfy.homes.api.Extension
+import ch.skyfy.homes.api.config.Configs
+import ch.skyfy.homes.api.config.Player
+import ch.skyfy.homes.api.config.PlayersHomesConfig
 import ch.skyfy.homes.commands.HomesCmd
-import ch.skyfy.homes.config.*
 import ch.skyfy.homes.extension.ExperienceExtension
-import ch.skyfy.homes.utils.setupConfigDirectory
+import ch.skyfy.homes.features.BonusFeature
 import ch.skyfy.json5configlib.ConfigManager
 import ch.skyfy.json5configlib.updateIterable
-import net.fabricmc.api.DedicatedServerModInitializer
+import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.loader.api.FabricLoader
@@ -16,7 +18,7 @@ import org.apache.logging.log4j.Logger
 import java.nio.file.Path
 
 @Suppress("MemberVisibilityCanBePrivate")
-class HomesMod : DedicatedServerModInitializer {
+class HomesMod : ModInitializer {
 
     companion object {
         const val MOD_ID: String = "homes"
@@ -25,14 +27,15 @@ class HomesMod : DedicatedServerModInitializer {
     }
 
     init {
-        setupConfigDirectory()
-        ConfigManager.loadConfigs(arrayOf(Configs.javaClass))
+        ConfigManager.loadConfigs(arrayOf(ExperienceExtension.javaClass))
     }
 
-    override fun onInitializeServer() {
+    override fun onInitialize() {
         registerCommands()
 
         Extension.registerExtension("Experience", ExperienceExtension::class)
+
+        BonusFeature
 
         ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
             Configs.PLAYERS_HOMES.updateIterable(PlayersHomesConfig::players) {

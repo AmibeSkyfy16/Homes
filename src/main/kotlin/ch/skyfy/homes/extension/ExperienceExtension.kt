@@ -2,8 +2,10 @@
 
 package ch.skyfy.homes.extension
 
+import ch.skyfy.homes.HomesMod
 import ch.skyfy.homes.api.Extension
-import ch.skyfy.homes.config.Configs
+import ch.skyfy.homes.api.config.Configs
+import ch.skyfy.json5configlib.ConfigData
 import ch.skyfy.json5configlib.Defaultable
 import ch.skyfy.json5configlib.Validatable
 import com.mojang.brigadier.arguments.StringArgumentType
@@ -21,6 +23,8 @@ import kotlin.math.min
  * more the experience cost will be high
  */
 object ExperienceExtension : Extension() {
+
+    private val EXPERIENCE_FEATURE_CONFIG = ConfigData.invoke<ExperienceExtensionConfig, DefaultExperienceExtensionConfig>(HomesMod.CONFIG_DIRECTORY.resolve("experience-extension-config.json5"), true)
 
     override fun teleportHome(context: CommandContext<ServerCommandSource>): Boolean {
         val spe = context.source.player ?: return true
@@ -40,7 +44,7 @@ object ExperienceExtension : Extension() {
             (max(playerZ, home.z) - min(playerZ, home.z)).toInt(),
         ).max()
 
-        val costs = Configs.EXPERIENCE_FEATURE_CONFIG.serializableData.experienceCosts
+        val costs = EXPERIENCE_FEATURE_CONFIG.serializableData.experienceCosts
         val cost = costs.map {
             val min = it.first.first
             val max = it.second.first

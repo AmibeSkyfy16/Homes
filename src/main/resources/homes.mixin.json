@@ -4,13 +4,10 @@
   "package": "ch.skyfy.homes.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-
-  ],
-  "server": [
     "EntityMixin"
   ],
-  "client": [
-  ],
+  "server": [],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }

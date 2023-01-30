@@ -2,10 +2,10 @@
 
 package ch.skyfy.homes.commands
 
-import ch.skyfy.homes.HomesMod
+import ch.skyfy.homes.api.config.Configs
+import ch.skyfy.homes.api.events.PlayerTeleportationEvents
 import ch.skyfy.homes.callbacks.EntityMoveCallback
-import ch.skyfy.homes.config.Configs
-import ch.skyfy.homes.utils.getGroupRules
+import ch.skyfy.homes.api.utils.getRule
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -38,8 +38,8 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
                 if (isDistanceGreaterThan(value.second, entity.pos, 2)) {
                     value.first.cancel()
                     teleporting.remove(entity.uuidAsString)
-                    HomesMod.LOGGER.info("CANCELLED TELEPORT")
                     entity.sendMessage(Text.literal("You moved ! teleportation cancelled !").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+                    PlayerTeleportationEvents.TELEPORTATION_CANCELLED.invoker().onTeleportationCancelled(entity)
                     return ActionResult.PASS
                 }
             }
@@ -50,7 +50,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
     fun teleportHome(spe: ServerPlayerEntity, homeName: String) {
 
         val player = Configs.PLAYERS_HOMES.serializableData.players.find { spe.uuidAsString == it.uuid } ?: return
-        val rule = getGroupRules(player) ?: return
+        val rule = getRule(player) ?: return
 
         val home = player.homes.find { it.name == homeName }
         if (home == null) {
@@ -77,6 +77,8 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
 
             teleporting.putIfAbsent(spe.uuidAsString, Pair(this@launch, Vec3d(spe.pos.x, spe.pos.y, spe.pos.z)))
 
+            PlayerTeleportationEvents.TELEPORTATION_STANDSTILL_STARTED.invoker().onTeleportationStandStill(spe, rule)
+
             repeat(rule.standStill) { second ->
                 spe.sendMessage(Text.literal("${rule.standStill - second} seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
                 delay(1000L)
@@ -88,6 +90,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
             spe.server.execute {
                 spe.teleport(spe.world as ServerWorld?, home.x, home.y, home.z, home.yaw, home.pitch)
                 spe.sendMessage(Text.literal("You've arrived at your destination ($homeName)").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
+                PlayerTeleportationEvents.TELEPORTATION_DONE.invoker().onTeleportationDone(spe, rule)
             }
         }
     }

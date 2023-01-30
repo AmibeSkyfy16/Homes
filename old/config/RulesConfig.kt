@@ -1,5 +1,8 @@
 package ch.skyfy.homes.config
 
+import ch.skyfy.homes.api.config.GroupRules
+import ch.skyfy.homes.api.config.Rule
+import ch.skyfy.homes.api.config.RulesConfig
 import ch.skyfy.json5configlib.Defaultable
 import ch.skyfy.json5configlib.Validatable
 import io.github.xn32.json5k.SerialComment
