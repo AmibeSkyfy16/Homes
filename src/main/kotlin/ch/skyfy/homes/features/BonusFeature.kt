@@ -6,18 +6,18 @@ import ch.skyfy.homes.api.events.TeleportationCancelled
 import ch.skyfy.homes.api.events.TeleportationDone
 import ch.skyfy.homes.api.events.TeleportationStandStillStarted
 import ch.skyfy.homes.api.utils.getBonus
-import ch.skyfy.homes.api.utils.getRule
 import ch.skyfy.homes.api.utils.getPlayer
+import ch.skyfy.homes.api.utils.getRule
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.registry.Registries
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.registry.Registry
 
 object BonusFeature {
 
     init {
         fun giveEffect(player: ServerPlayerEntity, bonusEffect: BonusEffect) {
-            Registries.STATUS_EFFECT.keys.firstOrNull { it.value.toString() == bonusEffect.name }?.let {
-                Registries.STATUS_EFFECT.get(it)?.let { statusEffect ->
+            Registry.STATUS_EFFECT.keys.firstOrNull { it.value.toString() == bonusEffect.name }?.let {
+                Registry.STATUS_EFFECT.get(it)?.let { statusEffect ->
                     player.addStatusEffect(StatusEffectInstance(statusEffect, bonusEffect.duration * 20, bonusEffect.amplifier))
                 }
             }
