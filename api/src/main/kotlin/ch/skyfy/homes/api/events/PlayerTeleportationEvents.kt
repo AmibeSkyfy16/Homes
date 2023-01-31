@@ -1,11 +1,8 @@
 package ch.skyfy.homes.api.events
 
-import ch.skyfy.homes.api.config.Player
 import ch.skyfy.homes.api.config.Rule
 import net.fabricmc.fabric.api.event.Event
 import net.fabricmc.fabric.api.event.EventFactory
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents.ServerStarting
-import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayerEntity
 
 object PlayerTeleportationEvents {

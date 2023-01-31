@@ -12,8 +12,8 @@ import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.context.CommandContext
 import kotlinx.serialization.Serializable
 import net.minecraft.server.command.ServerCommandSource
+import net.minecraft.text.LiteralText
 import net.minecraft.text.Style
-import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import kotlin.math.max
 import kotlin.math.min
@@ -56,10 +56,10 @@ object ExperienceExtension : Extension() {
 
         if (cost != null) {
             return if (spe.experienceLevel < cost) {
-                spe.sendMessage(Text.literal("You need at least $cost experience level to be able to teleport to your home").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
+                spe.sendMessage(LiteralText("You need at least $cost experience level to be able to teleport to your home").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), false)
                 false
             } else {
-                spe.sendMessage(Text.literal("The cost for the teleportation is $cost experience level"))
+                spe.sendMessage(LiteralText("The cost for the teleportation is $cost experience level"), false)
                 spe.setExperienceLevel(spe.experienceLevel - cost)
                 true
             }

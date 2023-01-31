@@ -10,7 +10,7 @@ import ch.skyfy.homes.features.BonusFeature
 import ch.skyfy.json5configlib.ConfigManager
 import ch.skyfy.json5configlib.updateIterable
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.loader.api.FabricLoader
 import org.apache.logging.log4j.LogManager
@@ -45,6 +45,6 @@ class HomesMod : ModInitializer {
         }
     }
 
-    private fun registerCommands() = CommandRegistrationCallback.EVENT.register { dispatcher, _, _ -> HomesCmd().register(dispatcher) }
+    private fun registerCommands() = CommandRegistrationCallback.EVENT.register { dispatcher, _ -> HomesCmd().register(dispatcher) }
 
 }

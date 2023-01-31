@@ -39,10 +39,10 @@ class DefaultBonusConfig : Defaultable<BonusConfig> {
     override fun getDefault(): BonusConfig {
         return BonusConfig(mutableListOf(
             GroupBonus("DEFAULT", Bonus(mutableMapOf(
-                "TELEPORTATION_DONE" to listOf<BonusEffect>(
+                "TELEPORTATION_DONE" to listOf(
                     BonusEffect("minecraft:resistance", 10, 4)
                 ),
-                "TELEPORTATION_CANCELLED" to listOf<BonusEffect>(
+                "TELEPORTATION_CANCELLED" to listOf(
                     BonusEffect("minecraft:slowness", 5, 1)
                 )
             )))

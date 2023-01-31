@@ -4,8 +4,8 @@ package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.api.config.Configs
 import ch.skyfy.homes.api.events.PlayerTeleportationEvents
-import ch.skyfy.homes.callbacks.EntityMoveCallback
 import ch.skyfy.homes.api.utils.getRule
+import ch.skyfy.homes.callbacks.EntityMoveCallback
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -15,8 +15,8 @@ import net.minecraft.entity.MovementType
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.LiteralText
 import net.minecraft.text.Style
-import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Formatting
 import net.minecraft.util.math.Vec3d
@@ -29,7 +29,9 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
 
     private val cooldowns: MutableMap<String, Long> = mutableMapOf()
 
-    init { EntityMoveCallback.EVENT.register(::onPlayerMove) }
+    init {
+        EntityMoveCallback.EVENT.register(::onPlayerMove)
+    }
 
     private fun onPlayerMove(entity: Entity, movementType: MovementType, movement: Vec3d): ActionResult {
         if (entity is ServerPlayerEntity) {
@@ -38,7 +40,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
                 if (isDistanceGreaterThan(value.second, entity.pos, 2)) {
                     value.first.cancel()
                     teleporting.remove(entity.uuidAsString)
-                    entity.sendMessage(Text.literal("You moved ! teleportation cancelled !").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+                    entity.sendMessage(LiteralText("You moved ! teleportation cancelled !").setStyle(Style.EMPTY.withColor(Formatting.RED)), false)
                     PlayerTeleportationEvents.TELEPORTATION_CANCELLED.invoker().onTeleportationCancelled(entity)
                     return ActionResult.PASS
                 }
@@ -54,14 +56,14 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
 
         val home = player.homes.find { it.name == homeName }
         if (home == null) {
-            spe.sendMessage(Text.literal("Home $homeName does not exist !").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+            spe.sendMessage(LiteralText("Home $homeName does not exist !").setStyle(Style.EMPTY.withColor(Formatting.RED)), false)
             return
         }
 
         launch {
 
             if (teleporting.containsKey(spe.uuidAsString)) {
-                spe.sendMessage(Text.literal("A teleportation is already in progress").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+                spe.sendMessage(LiteralText("A teleportation is already in progress").setStyle(Style.EMPTY.withColor(Formatting.RED)), false)
                 return@launch
             }
 
@@ -70,7 +72,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
             if (startTime != null) {
                 val elapsed = (currentTimeMillis() - startTime) / 1000L
                 if (elapsed < rule.cooldown) {
-                    spe.sendMessage(Text.literal("You must wait another ${rule.cooldown - elapsed} seconds before you can use this command again").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+                    spe.sendMessage(LiteralText("You must wait another ${rule.cooldown - elapsed} seconds before you can use this command again").setStyle(Style.EMPTY.withColor(Formatting.RED)), false)
                     return@launch
                 }
             }
@@ -80,7 +82,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
             PlayerTeleportationEvents.TELEPORTATION_STANDSTILL_STARTED.invoker().onTeleportationStandStill(spe, rule)
 
             repeat(rule.standStill) { second ->
-                spe.sendMessage(Text.literal("${rule.standStill - second} seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
+                spe.sendMessage(LiteralText("${rule.standStill - second} seconds left before teleporting").setStyle(Style.EMPTY.withColor(Formatting.GOLD)), true)
                 delay(1000L)
             }
 
@@ -89,7 +91,7 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
 
             spe.server.execute {
                 spe.teleport(spe.world as ServerWorld?, home.x, home.y, home.z, home.yaw, home.pitch)
-                spe.sendMessage(Text.literal("You've arrived at your destination ($homeName)").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
+                spe.sendMessage(LiteralText("You've arrived at your destination ($homeName)").setStyle(Style.EMPTY.withColor(Formatting.GREEN)), false)
                 PlayerTeleportationEvents.TELEPORTATION_DONE.invoker().onTeleportationDone(spe, rule)
             }
         }
@@ -116,7 +118,7 @@ class TeleportHomeToAnotherPlayer : TeleportHomeImpl() {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null) teleportHome(targetPlayer, getString(context, "homeName"))
-        else context.source?.sendFeedback(Text.literal("Player not found"), false)
+        else context.source?.sendFeedback(LiteralText("Player not found"), false)
         return 0
     }
 }

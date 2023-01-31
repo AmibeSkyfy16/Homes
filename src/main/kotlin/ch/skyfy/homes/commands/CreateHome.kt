@@ -12,8 +12,8 @@ import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.command.ServerCommandSource
+import net.minecraft.text.LiteralText
 import net.minecraft.text.Style
-import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
 fun addHomeToPlayer(
@@ -31,19 +31,19 @@ fun addHomeToPlayer(
 
     // Check for home duplication
     player.homes.find { homeName == it.name }?.let {
-        playerEntity.sendMessage(Text.literal("You already have a home named $homeName").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+        playerEntity.sendMessage(LiteralText("You already have a home named $homeName").setStyle(Style.EMPTY.withColor(Formatting.RED)), false)
         return 0
     }
 
     // Check for maxHomes rule
     if (player.homes.size + 1 > rule.maxHomes) {
-        playerEntity.sendMessage(Text.literal("You can't have more than ${rule.maxHomes} homes").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+        playerEntity.sendMessage(LiteralText("You can't have more than ${rule.maxHomes} homes").setStyle(Style.EMPTY.withColor(Formatting.RED)), false)
         return 0
     }
 
     Configs.PLAYERS_HOMES.updateIterableNested(Player::homes, player.homes) { it.add(Home(x, y, z, pitch, yaw, homeName)) }
 
-    playerEntity.sendMessage(Text.literal("The home of name «$homeName»  at coordinate ${String.format("%.2f", x)} ${String.format("%.2f", y)} ${String.format("%.2f", z)} has been added").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
+    playerEntity.sendMessage(LiteralText("The home of name «$homeName»  at coordinate ${String.format("%.2f", x)} ${String.format("%.2f", y)} ${String.format("%.2f", z)} has been added").setStyle(Style.EMPTY.withColor(Formatting.GREEN)), false)
     return 0
 }
 
@@ -72,7 +72,7 @@ class CreateHomeForAnotherPlayer : AbstractCommand() {
         val targetPlayerName = getString(context, "playerName")
         val targetPlayer = context.source?.server?.playerManager?.getPlayer(targetPlayerName)
         if (targetPlayer != null) addHomeToPlayer(targetPlayer, getString(context, "homeName"))
-        else context.source?.sendFeedback(Text.literal("Player not found"), false)
+        else context.source?.sendFeedback(LiteralText("Player not found"), false)
         return SINGLE_SUCCESS
     }
 }
@@ -91,7 +91,7 @@ class CreateHomeForAnotherPlayerWithCoordinates : AbstractCommand()  {
                 pitch = getFloat(context, "pitch"),
                 yaw = getFloat(context, "yaw"),
             )
-        else context.source?.sendFeedback(Text.literal("Player not found"), false)
+        else context.source?.sendFeedback(LiteralText("Player not found"), false)
         return SINGLE_SUCCESS
     }
 }
