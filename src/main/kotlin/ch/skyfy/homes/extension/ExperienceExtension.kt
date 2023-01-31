@@ -2,8 +2,8 @@
 
 package ch.skyfy.homes.extension
 
-import ch.skyfy.homes.HomesMod
 import ch.skyfy.homes.api.Extension
+import ch.skyfy.homes.api.HomesAPIMod
 import ch.skyfy.homes.api.config.Configs
 import ch.skyfy.json5configlib.ConfigData
 import ch.skyfy.json5configlib.Defaultable
@@ -24,7 +24,7 @@ import kotlin.math.min
  */
 object ExperienceExtension : Extension() {
 
-    private val EXPERIENCE_FEATURE_CONFIG = ConfigData.invoke<ExperienceExtensionConfig, DefaultExperienceExtensionConfig>(HomesMod.CONFIG_DIRECTORY.resolve("experience-extension-config.json5"), true)
+    private val EXPERIENCE_FEATURE_CONFIG : ConfigData<ExperienceExtensionConfig> = ConfigData.invoke<ExperienceExtensionConfig, DefaultExperienceExtensionConfig>(HomesAPIMod.EXTENSION_DIRECTORY.resolve("experience-extension-config.json5"), true)
 
     override fun teleportHome(context: CommandContext<ServerCommandSource>): Boolean {
         val spe = context.source.player ?: return true

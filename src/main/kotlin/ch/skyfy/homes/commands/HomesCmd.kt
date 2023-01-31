@@ -2,6 +2,7 @@ package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.api.config.Configs
 import ch.skyfy.homes.api.config.Player
+import ch.skyfy.homes.api.utils.getConfigFiles
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.DoubleArgumentType
 import com.mojang.brigadier.arguments.FloatArgumentType
@@ -91,8 +92,10 @@ class HomesCmd {
                 )
             ).then( // /homes list
                 literal("list").executes(ListHome())
-            ).then( // /homes reloadConfigs
-                literal("reloadConfigs").executes(ReloadConfig())
+            ).then( // /homes reload <filename | ALL>
+                literal("reload").then(
+                    argument("fileName", StringArgumentType.string()).suggests(::getConfigFiles).executes(ReloadFiles())
+                )
             )
         dispatcher.register(veryBigCommand)
     }

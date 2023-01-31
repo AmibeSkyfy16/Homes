@@ -22,7 +22,7 @@ class HomesMod : ModInitializer {
 
     companion object {
         const val MOD_ID: String = "homes"
-        val CONFIG_DIRECTORY: Path = FabricLoader.getInstance().configDir.resolve(MOD_ID)
+//        val CONFIG_DIRECTORY: Path = FabricLoader.getInstance().configDir.resolve(MOD_ID)
         val LOGGER: Logger = LogManager.getLogger(HomesMod::class.java)
     }
 
