@@ -30,13 +30,12 @@ data class Player(
 }
 
 @Serializable
+data class Location (val x: Double, val y: Double, val z: Double, val yaw: Float, val pitch: Float, val dimension: String) : Validatable
+
+@Serializable
 data class Home(
-    var x: Double,
-    var y: Double,
-    var z: Double,
-    var pitch: Float,
-    var yaw: Float,
-    var name: String
+    var name: String,
+    var location: Location
 ) : Validatable
 
 class DefaultPlayerHomeConfig : Defaultable<PlayersHomesConfig> {

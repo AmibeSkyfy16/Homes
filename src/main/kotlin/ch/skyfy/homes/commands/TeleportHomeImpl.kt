@@ -4,8 +4,8 @@ package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.api.config.Configs
 import ch.skyfy.homes.api.events.PlayerTeleportationEvents
-import ch.skyfy.homes.callbacks.EntityMoveCallback
 import ch.skyfy.homes.api.utils.getRule
+import ch.skyfy.homes.callbacks.EntityMoveCallback
 import com.mojang.brigadier.Command.SINGLE_SUCCESS
 import com.mojang.brigadier.arguments.StringArgumentType.getString
 import com.mojang.brigadier.context.CommandContext
@@ -14,7 +14,6 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.MovementType
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
@@ -29,7 +28,9 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
 
     private val cooldowns: MutableMap<String, Long> = mutableMapOf()
 
-    init { EntityMoveCallback.EVENT.register(::onPlayerMove) }
+    init {
+        EntityMoveCallback.EVENT.register(::onPlayerMove)
+    }
 
     private fun onPlayerMove(entity: Entity, movementType: MovementType, movement: Vec3d): ActionResult {
         if (entity is ServerPlayerEntity) {
@@ -88,9 +89,13 @@ abstract class TeleportHomeImpl(override val coroutineContext: CoroutineContext 
             teleporting.remove(spe.uuidAsString)
 
             spe.server.execute {
-                spe.teleport(spe.world as ServerWorld?, home.x, home.y, home.z, home.yaw, home.pitch)
-                spe.sendMessage(Text.literal("You've arrived at your destination ($homeName)").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
-                PlayerTeleportationEvents.TELEPORTATION_DONE.invoker().onTeleportationDone(spe, rule)
+                val loc = home.location
+                val key = spe.server.worldRegistryKeys.first { it.value.toString() == loc.dimension }
+                spe.server.getWorld(key)?.let {
+                    spe.teleport(it, loc.x, loc.y, loc.z, loc.yaw, loc.pitch)
+                    spe.sendMessage(Text.literal("You've arrived at your destination ($homeName)").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
+                    PlayerTeleportationEvents.TELEPORTATION_DONE.invoker().onTeleportationDone(spe, rule)
+                }
             }
         }
     }

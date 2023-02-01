@@ -7,7 +7,7 @@ repositories {
     maven("https://repo.repsy.io/mvn/amibeskyfy16/repo")
 }
 dependencies {
-    modImplementation("ch.skyfy.homes:homes-api:1.0.6+1.19.3")
+    modImplementation("ch.skyfy.homes:homes-api:1.0.7+1.19.3")
 }
 ```
 

@@ -2,6 +2,7 @@ package ch.skyfy.homes.commands
 
 import ch.skyfy.homes.api.config.Configs
 import ch.skyfy.homes.api.config.Home
+import ch.skyfy.homes.api.config.Location
 import ch.skyfy.homes.api.config.Player
 import ch.skyfy.homes.api.utils.getRule
 import ch.skyfy.json5configlib.updateIterableNested
@@ -41,7 +42,9 @@ fun addHomeToPlayer(
         return 0
     }
 
-    Configs.PLAYERS_HOMES.updateIterableNested(Player::homes, player.homes) { it.add(Home(x, y, z, pitch, yaw, homeName)) }
+    val loc = Location(x, y, z, pitch, yaw, playerEntity.world.dimensionKey.value.toString())
+
+    Configs.PLAYERS_HOMES.updateIterableNested(Player::homes, player.homes) { it.add(Home(homeName, loc)) }
 
     playerEntity.sendMessage(Text.literal("The home of name «$homeName»  at coordinate ${String.format("%.2f", x)} ${String.format("%.2f", y)} ${String.format("%.2f", z)} has been added").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
     return 0

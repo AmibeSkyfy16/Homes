@@ -39,9 +39,9 @@ object ExperienceExtension : Extension() {
         val home = player.homes.find { it.name == homeName } ?: return true
 
         val greaterDistance = listOf(
-            (max(playerX, home.x) - min(playerX, home.x)).toInt(),
-            (max(playerY, home.y) - min(playerY, home.y)).toInt(),
-            (max(playerZ, home.z) - min(playerZ, home.z)).toInt(),
+            (max(playerX, home.location.x) - min(playerX, home.location.x)).toInt(),
+            (max(playerY, home.location.y) - min(playerY, home.location.y)).toInt(),
+            (max(playerZ, home.location.z) - min(playerZ, home.location.z)).toInt(),
         ).max()
 
         val costs = EXPERIENCE_FEATURE_CONFIG.serializableData.experienceCosts
